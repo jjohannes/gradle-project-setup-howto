@@ -25,7 +25,5 @@ public class MainModule {
         new KashyyykModule();
         new NabooModule();
         new TatooineModule();
-
-        Guice.createInjector();
     }
 }
