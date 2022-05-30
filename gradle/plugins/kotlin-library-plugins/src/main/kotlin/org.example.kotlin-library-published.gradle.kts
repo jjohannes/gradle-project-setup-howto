@@ -1,6 +1,6 @@
 plugins {
     id("maven-publish")
-    id("org.example.java-library")
+    id("org.example.kotlin-library")
 }
 
 // Publish with sources and Javadoc

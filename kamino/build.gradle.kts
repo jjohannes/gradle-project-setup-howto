@@ -1,5 +1,5 @@
 plugins {
-    id("org.example.java-library-published")
+    id("org.example.kotlin-library-published")
 }
 
 dependencies {

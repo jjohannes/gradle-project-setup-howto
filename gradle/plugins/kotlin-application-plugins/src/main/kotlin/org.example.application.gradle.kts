@@ -2,7 +2,7 @@ import org.example.application.tasks.MD5DirectoryChecksum
 import org.example.application.tasks.VersionXml
 
 plugins {
-    id("org.example.java")
+    id("org.example.kotlin")
     id("application")               // For stand-alone application packaging
     id("jacoco-report-aggregation") // get and aggregated coverage report for all tests
     id("test-report-aggregation")   // get and aggregated result report for all tests

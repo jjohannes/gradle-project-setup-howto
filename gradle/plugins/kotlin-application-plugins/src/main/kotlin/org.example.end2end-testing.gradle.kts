@@ -1,5 +1,5 @@
 plugins {
-    id("org.example.java")
+    id("org.example.kotlin")
 }
 
 // Specific API fixtures used for testing without live service

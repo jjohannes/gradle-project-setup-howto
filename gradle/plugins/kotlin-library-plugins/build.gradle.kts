@@ -5,5 +5,5 @@ plugins {
 dependencies {
     implementation(platform(project(":plugins-platform")))
 
-    implementation(project(":java-base-plugins"))
+    implementation(project(":kotlin-base-plugins"))
 }

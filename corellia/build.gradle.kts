@@ -1,5 +1,5 @@
 plugins {
-    id("org.example.java-library-with-test-fixtures")
+    id("org.example.kotlin-library-with-test-fixtures")
 }
 
 dependencies {

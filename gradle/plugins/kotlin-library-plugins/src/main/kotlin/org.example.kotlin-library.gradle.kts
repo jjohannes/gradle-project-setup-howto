@@ -1,4 +1,4 @@
 plugins {
     id("java-library")
-    id("org.example.java")
+    id("org.example.kotlin")
 }

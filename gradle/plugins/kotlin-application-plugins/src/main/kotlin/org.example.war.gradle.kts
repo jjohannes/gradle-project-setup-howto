@@ -1,6 +1,6 @@
 plugins {
     id("war")
-    id("org.example.java")
+    id("org.example.kotlin")
     id("org.example.build-parameters")
 }
 

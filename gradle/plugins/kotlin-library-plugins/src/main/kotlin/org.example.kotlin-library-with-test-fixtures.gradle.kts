@@ -1,4 +1,4 @@
 plugins {
-    id("org.example.java-library")
+    id("org.example.kotlin-library")
     id("java-test-fixtures")
 }
