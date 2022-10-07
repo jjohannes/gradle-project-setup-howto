@@ -2,10 +2,6 @@ plugins {
     id("org.example.application")
 }
 
-application {
-    mainClass.set("org.example.product.app.Application")
-}
-
 dependencies {
     providedCompile("jakarta.servlet:jakarta.servlet-api")
 
@@ -18,6 +14,10 @@ dependencies {
     implementation("com.google.inject.extensions:guice-servlet")
     implementation("com.google.inject:guice")
     implementation("org.slf4j:slf4j-api")
+    implementation("org.springframework.boot:spring-boot")
+    implementation("org.springframework.boot:spring-boot-autoconfigure")
+    implementation("org.springframework:spring-context")
+    implementation("org.springframework:spring-web")
 
     mockApiImplementation(project(path))
     mockApiImplementation("com.google.guava:guava")
@@ -29,4 +29,5 @@ dependencies {
     endToEndTestImplementation("org.junit.jupiter:junit-jupiter-api")
 
     runtimeOnly("org.slf4j:slf4j-simple")
+    runtimeOnly("org.springframework.boot:spring-boot-starter-web")
 }

@@ -29,3 +29,9 @@ dependencies.components {
     withModule<ParentPomAsPlatformRule>(HttpComponentsPlatformRule.HTTP_COMPONENTS_CLIENT)
     withModule<ParentPomAsPlatformRule>(Slf4jPlatformRule.SLF4J_PARENT)
 }
+
+configurations.all {
+    resolutionStrategy.capabilitiesResolution.withCapability("javax.activation:activation") {
+        select("com.sun.activation:jakarta.activation:0")
+    }
+}

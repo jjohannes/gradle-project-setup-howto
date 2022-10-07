@@ -9,4 +9,5 @@ dependencies {
     implementation("org.example:build-parameters-plugins")
     implementation("org.owasp:dependency-check-gradle")
     implementation("io.fuchs.gradle.classpath-collision-detector:classpath-collision-detector")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin")
 }

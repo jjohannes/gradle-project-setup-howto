@@ -3,7 +3,7 @@ import org.example.application.tasks.VersionXml
 
 plugins {
     id("org.example.java")
-    id("application")               // For stand-alone application packaging
+    id("org.springframework.boot")
     id("jacoco-report-aggregation") // get and aggregated coverage report for all tests
     id("test-report-aggregation")   // get and aggregated result report for all tests
     id("org.example.war")           // For web application packaging/deployment
@@ -12,6 +12,14 @@ plugins {
     id("org.owasp.dependencycheck")
 }
 
+dependencies {
+    developmentOnly(platform("org.example.product:platform"))
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+}
+
+configurations.productionRuntimeClasspath {
+    shouldResolveConsistentlyWith(configurations.appRuntimeClasspath.get())
+}
 configurations.aggregateTestReportResults {
     shouldResolveConsistentlyWith(configurations.appRuntimeClasspath.get())
 }
@@ -31,6 +39,7 @@ val resourcesChecksum = tasks.register<MD5DirectoryChecksum>("resourcesChecksum"
 }
 
 tasks.processResources {
+    from(rootProject.layout.projectDirectory.file("gradle/version.txt"))
     from(generateVersionXml)
     from(resourcesChecksum)
 }

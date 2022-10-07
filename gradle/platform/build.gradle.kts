@@ -11,6 +11,7 @@ dependencies {
     api(platform("org.junit:junit-bom:5.7.2")) { (this as ExternalModuleDependency).version { reject("[5.8.0,)") } } // Do not Upgrade to 5.8: https://github.com/gradle/gradle/issues/18627
     api(platform("org.mockito:mockito-bom:4.5.1"))
     api(platform("org.slf4j:slf4j-parent:1.7.36")) { because ("see Slf4jPlatformRule") } // Parent as Anchor for Alignment BOM
+    api(platform("org.springframework.boot:spring-boot-dependencies:2.7.18"))
 }
 
 dependencies.constraints {
@@ -20,7 +21,7 @@ dependencies.constraints {
     api("jakarta.inject:jakarta.inject-api:1.0.5") { version { reject("[2.0.0,)") } } // Upgrade to 2.x requires newer Jakarta APIs
     api("jakarta.servlet:jakarta.servlet-api:4.0.4") { version { reject("[5.0.0,)") } } // Stay Tomcat 8 compatible
     api("org.apache.commons:commons-lang3:3.9")
-    api("org.apache.solr:solr-solrj:7.7.3") { version { reject("[8.0.0,)") } } // API changes in 8 require production code changes
+    api("org.apache.solr:solr-solrj:7.7.3!!") { version { reject("[8.0.0,)") } } // API changes in 8 require production code changes
     api("org.apache.velocity:velocity-engine-core:2.3")
     api("org.apache.zookeeper:zookeeper:3.8.0")
     api("org.assertj:assertj-core:3.22.0")

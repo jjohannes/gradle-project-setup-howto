@@ -33,9 +33,9 @@ tasks.named("check") {
     }
 }
 
-tasks.register("run") {
+tasks.register("bootRun") {
     group = mainBuildGroup
-    description = "Build and run as standalone application"
+    description = "Build and run as standalone Spring Boot application"
     dependsOn(":app:$name")
 }
 

@@ -8,4 +8,5 @@ dependencies.constraints {
     api("io.fuchs.gradle.classpath-collision-detector:classpath-collision-detector:0.3")
     api("org.gradlex:java-ecosystem-capabilities:1.3.1")
     api("org.owasp:dependency-check-gradle:9.0.2")
+    api("org.springframework.boot:spring-boot-gradle-plugin:2.7.18")
 }

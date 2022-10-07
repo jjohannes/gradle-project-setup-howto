@@ -1,20 +1,26 @@
 package org.example.product.app;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@WebServlet("/check")
-public class AppServlet extends HttpServlet {
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        res.setContentType("text/html");
-        PrintWriter pw = res.getWriter();
-        pw.println("<html><body>");
-        pw.println("App is running...");
-        pw.println("</body></html>");
-        pw.close();
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import static java.util.Objects.requireNonNull;
+
+@RestController
+public class AppServlet {
+
+    @GetMapping("/")
+    public String index() throws IOException {
+        new MainModule().run();
+        String version = new BufferedReader(new InputStreamReader(
+                requireNonNull(AppServlet.class.getResourceAsStream("/version.txt"))
+        )).readLine();
+        return "<html><body>" +
+                "App is running... !!!!" +
+                "<br/>Version " + version +
+                "</body></html>";
     }
 }
