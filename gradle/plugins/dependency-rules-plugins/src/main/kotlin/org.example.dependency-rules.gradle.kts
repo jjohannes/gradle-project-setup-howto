@@ -28,4 +28,14 @@ dependencies.components {
     // Make parents usable as pure 'Alignment Platforms' - remove all constraints that do not concern the alignment
     withModule<ParentPomAsPlatformRule>(HttpComponentsPlatformRule.HTTP_COMPONENTS_CLIENT)
     withModule<ParentPomAsPlatformRule>(Slf4jPlatformRule.SLF4J_PARENT)
+
+    // Avoid conflict between 'javax.activation' and 'jakarta.activation-api' in the detachedConfiguration that is input to AndroidLintTask.lintTool.classpath
+    withModule("com.android.tools:repository") {
+        allVariants {
+            withDependencies {
+                removeIf { it.name == "javax.activation" }
+                add("jakarta.activation:jakarta.activation-api")
+            }
+        }
+    }
 }

@@ -14,7 +14,14 @@ dependencies {
 }
 
 dependencies.constraints {
+    api("androidx.appcompat:appcompat:1.4.1")
+    api("androidx.constraintlayout:constraintlayout:2.1.2")
+    api("androidx.navigation:navigation-fragment:2.3.5")
+    api("androidx.navigation:navigation-ui:2.3.5")
+    api("androidx.test.espresso:espresso-core:3.4.0")
+    api("androidx.test.ext:junit:1.1.3")
     api("com.github.racc:typesafeconfig-guice:0.1.0")
+    api("com.google.android.material:material:1.6.0")
     api("com.sun.activation:jakarta.activation:1.2.2") { version { reject("[2.0.0,)") } } // Upgrade to 2.x requires newer Jakarta APIs
     api("com.sun.mail:jakarta.mail:1.6.7") { version { reject("[2.0.0,)") } } // Upgrade to 2.x requires newer Jakarta APIs
     api("jakarta.inject:jakarta.inject-api:1.0.5") { version { reject("[2.0.0,)") } } // Upgrade to 2.x requires newer Jakarta APIs

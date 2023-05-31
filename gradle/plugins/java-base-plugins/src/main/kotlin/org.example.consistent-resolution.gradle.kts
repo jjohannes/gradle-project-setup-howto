@@ -1,3 +1,5 @@
+import com.android.build.api.attributes.BuildTypeAttr
+
 plugins {
     id("java-base")
 }
@@ -17,6 +19,7 @@ val appRuntimeClasspath = configurations.resolvable("appRuntimeClasspath") {
     attributes {
         // We want the runtime classpath represented by Usage.JAVA_RUNTIME
         attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage.JAVA_RUNTIME))
+        attribute(BuildTypeAttr.ATTRIBUTE, objects.named("release"))
     }
 }
 

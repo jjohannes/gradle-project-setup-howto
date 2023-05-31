@@ -1,4 +1,4 @@
-package org.example.application.tasks
+package org.example.android.tasks
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.RegularFileProperty

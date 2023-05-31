@@ -1,5 +1,5 @@
 plugins {
-    id("org.example.java-library-published")
+    id("org.example.android-library")
 }
 
 dependencies {
