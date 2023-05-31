@@ -1,5 +1,6 @@
 plugins {
     id("lifecycle-base")
+    id("org.example.dependency-analysis-root")
 }
 
 // Configure the ':tasks' task of the root project to only show
@@ -48,4 +49,10 @@ tasks.register("checkForDependencyVulnerabilities") {
     group = mainBuildGroup
     description = "Check current dependencies for known vulnerabilities"
     dependsOn(":app:dependencyCheckAnalyze")
+}
+
+tasks.register("checkForDependencyVersionUpgrades") {
+    group = mainBuildGroup
+    description = "Check for version upgrades (runs weekly on CI)"
+    dependsOn(gradle.includedBuild("platform").task(":$name"))
 }

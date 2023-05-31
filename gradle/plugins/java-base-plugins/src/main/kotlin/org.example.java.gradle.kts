@@ -3,6 +3,7 @@ plugins {
     id("jacoco") // Record test coverage data during test execution
     id("org.example.base")
     id("org.example.consistent-resolution")
+    id("org.example.dependency-analysis-project")
 }
 
 // Configure Java compilation on java {} extension or directly on 'JavaCompile' tasks
