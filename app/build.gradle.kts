@@ -3,7 +3,7 @@ plugins {
 }
 
 application {
-    mainClass.set("org.example.product.app.Application")
+    mainClass.set("org.example.product.app.ApplicationKt")
 }
 
 dependencies {
@@ -17,16 +17,19 @@ dependencies {
     implementation(project(":tatooine"))
     implementation("com.google.inject.extensions:guice-servlet")
     implementation("com.google.inject:guice")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.slf4j:slf4j-api")
 
+    mockApiApi("com.google.guava:guava")
+    mockApiApi("org.jetbrains.kotlin:kotlin-stdlib")
     mockApiImplementation(project(path))
-    mockApiImplementation("com.google.guava:guava")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api")
 
+    endToEndTestApi("org.jetbrains.kotlin:kotlin-stdlib")
+    endToEndTestApi("org.junit.jupiter:junit-jupiter-api")
     endToEndTestImplementation(project(path)) { capabilities { requireCapabilities("${project.group}:${project.name}-mock-api") } }
     endToEndTestImplementation("com.google.guava:guava")
-    endToEndTestImplementation("org.junit.jupiter:junit-jupiter-api")
 
     runtimeOnly("org.slf4j:slf4j-simple")
 }

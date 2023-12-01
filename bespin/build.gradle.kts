@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
     api(project(":corellia"))
+    api("org.jetbrains.kotlin:kotlin-stdlib")
 
     implementation(project(":coruscant"))
     implementation("org.apache.velocity:velocity-engine-core")

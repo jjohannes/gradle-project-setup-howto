@@ -1,17 +1,24 @@
 plugins {
     id("java")
+    id("org.jetbrains.kotlin.jvm")
     id("jacoco") // Record test coverage data during test execution
     id("org.example.base")
     id("org.example.consistent-resolution")
     id("org.example.dependency-analysis-project")
 }
 
-// Configure Java compilation on java {} extension or directly on 'JavaCompile' tasks
+// Configure Java/Kotlin compilation on java/kotlin {} extension or directly on 'JavaCompile' tasks
+val javaLanguageVersion = JavaLanguageVersion.of(17)
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    toolchain.languageVersion.set(javaLanguageVersion)
 }
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
+}
+kotlin {
+    jvmToolchain {
+        languageVersion.set(javaLanguageVersion)
+    }
 }
 
 // Configure details for *all* test executions directly on 'Test' task

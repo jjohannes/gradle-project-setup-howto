@@ -7,6 +7,7 @@ dependencies {
     api("com.fasterxml.jackson.core:jackson-databind")
     api("com.google.guava:guava")
     api("jakarta.inject:jakarta.inject-api")
+    api("org.jetbrains.kotlin:kotlin-stdlib")
     api("org.json:json")
     api("org.opensaml:opensaml")
 

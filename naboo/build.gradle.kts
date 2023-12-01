@@ -3,6 +3,8 @@ plugins {
 }
 
 dependencies {
+    api("org.jetbrains.kotlin:kotlin-stdlib")
+
     implementation("org.apache.solr:solr-solrj")
     implementation("org.apache.zookeeper:zookeeper-jute")
 

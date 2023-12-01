@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
     api("org.apache.poi:poi")
+    api("org.jetbrains.kotlin:kotlin-stdlib")
 
     implementation("commons-io:commons-io")
     implementation("org.apache.poi:poi-ooxml")
