@@ -1,7 +1,5 @@
 package org.example.product.app;
 
-import com.google.inject.Guice;
-import com.google.inject.servlet.SessionScoped;
 import org.example.product.bespin.BespinModule;
 import org.example.product.kamino.KaminoModule;
 import org.example.product.kashyyyk.KashyyykModule;
@@ -12,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-@SessionScoped
 public class MainModule {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainModule.class);
@@ -25,7 +22,5 @@ public class MainModule {
         new KashyyykModule();
         new NabooModule();
         new TatooineModule();
-
-        Guice.createInjector();
     }
 }

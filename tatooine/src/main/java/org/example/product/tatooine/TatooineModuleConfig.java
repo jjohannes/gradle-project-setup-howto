@@ -1,7 +1,5 @@
 package org.example.product.tatooine;
 
-import com.github.racc.tscg.TypesafeConfig;
-
 public class TatooineModuleConfig {
 
     private String val1;
@@ -15,7 +13,6 @@ public class TatooineModuleConfig {
         return val2;
     }
 
-    @TypesafeConfig(value = "module.cfg")
     public TatooineModuleConfig provide() {
         return new TatooineModuleConfig();
     }
