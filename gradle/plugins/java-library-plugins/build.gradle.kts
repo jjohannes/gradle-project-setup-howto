@@ -6,4 +6,5 @@ dependencies {
     implementation(platform(project(":plugins-platform")))
 
     implementation(project(":java-base-plugins"))
+    implementation("org.gradlex:java-module-testing")
 }

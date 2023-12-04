@@ -1,3 +1,5 @@
+import org.gradlex.javamodule.dependencies.dsl.GradleOnlyDirectives
+
 plugins {
     id("java")
     id("jacoco") // Record test coverage data during test execution
@@ -25,10 +27,13 @@ tasks.withType<Test>().configureEach {
 }
 
 // Configure common test runtime dependencies for *all* projects
-dependencies {
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testRuntimeOnly("org.slf4j:slf4j-simple")
+extensions.configure<GradleOnlyDirectives>("testModuleInfo") {
+    runtimeOnly("org.junit.jupiter.engine")
+    runtimeOnly("org.slf4j.simple")
 }
+
+// We use the merge Jar feature of 'extra-java-module-info' and javaModulesMergeJars also needs to get version from somewhere
+configurations.javaModulesMergeJars.get().shouldResolveConsistentlyWith(configurations["appRuntimeClasspath"])
 
 // Add a 'compileAll' task to run all of Java compilation in one go
 tasks.register("compileAll") {
