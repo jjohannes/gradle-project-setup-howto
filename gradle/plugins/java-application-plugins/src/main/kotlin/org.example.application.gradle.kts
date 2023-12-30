@@ -1,3 +1,4 @@
+import org.example.application.tasks.Jpackage
 import org.example.application.tasks.MD5DirectoryChecksum
 import org.example.application.tasks.VersionXml
 
@@ -33,6 +34,28 @@ val resourcesChecksum = tasks.register<MD5DirectoryChecksum>("resourcesChecksum"
 tasks.processResources {
     from(generateVersionXml)
     from(resourcesChecksum)
+}
+
+tasks.register<Jpackage>("jpackage") {
+    group = "build"
+
+    javaInstallation.set(javaToolchains.compilerFor(java.toolchain).map { it.metadata })
+    operatingSystem.set("macos")
+    architecture.set("aarch64")
+
+    mainModule.set(application.mainModule)
+    mainClass.set(application.mainClass)
+    version.set(project.version as String)
+    resources.set(layout.projectDirectory.dir("resources"))
+    applicationName.set("Gradle Project Setup Howto")
+    applicationDescription.set("How to structure a growing Gradle project with smart dependency management?")
+    vendor.set("Jendrik Johannes (Onepiece.Software)")
+    copyright.set("Copyright © 2023 Jendrik Johannes")
+
+    modulePath.from(tasks.jar)
+    modulePath.from(configurations.runtimeClasspath)
+
+    destination.set(layout.buildDirectory.dir("package"))
 }
 
 dependencyCheck {
