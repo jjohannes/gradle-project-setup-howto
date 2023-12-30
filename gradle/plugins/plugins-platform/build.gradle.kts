@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies.constraints {
-    api("com.autonomousapps:dependency-analysis-gradle-plugin:1.27.0")
+    api("com.autonomousapps:dependency-analysis-gradle-plugin:1.28.0")
     api("dev.jacomet.gradle.plugins:logging-capabilities:0.11.1")
     api("io.fuchs.gradle.classpath-collision-detector:classpath-collision-detector:0.3")
     api("org.gradlex:extra-java-module-info:1.6")
