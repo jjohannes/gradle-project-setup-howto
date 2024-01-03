@@ -1,6 +1,7 @@
 plugins {
     id("java-platform")
     id("org.example.base")
+    id("org.example.dependency-analysis-platform")
     id("org.gradlex.java-module-versions")
 }
 

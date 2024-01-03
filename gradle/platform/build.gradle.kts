@@ -13,10 +13,15 @@ dependencies {
 moduleInfo {
     version("com.google.common", "30.1-jre")
     version("jakarta.activation") { require("1.2.2"); reject("[2.0.0,)") } // Upgrade to 2.x requires newer Jakarta APIs
+    version("java.inject") { require("1.0.5"); reject("[2.0.0,)") } // Upgrade to 2.x requires newer Jakarta APIs
     version("jakarta.mail") { require("1.6.7"); reject("[2.0.0,)") } // Upgrade to 2.x requires newer Jakarta APIs
     version("jakarta.servlet", "6.0.0")
-    version("java.inject") { require("1.0.5"); reject("[2.0.0,)") } // Upgrade to 2.x requires newer Jakarta APIs
     version("javax.annotations.jsr305", "3.0.2")
     version("org.assertj.core", "3.22.0")
     version("velocity.engine.core", "2.3")
+}
+
+dependencies {
+    // list the 'main' modules of our software product for 'checkPlatformVersionConsistency'
+    product("org.example.product:app")
 }

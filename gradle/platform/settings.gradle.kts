@@ -4,3 +4,4 @@ pluginManagement {
 plugins {
     id("org.example.settings")
 }
+includeBuild("../..")

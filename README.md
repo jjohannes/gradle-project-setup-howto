@@ -6,11 +6,11 @@ This repo shows one possibility to structure a Gradle project when you want:
 - **No dependency hell** through smart dependency management with dependency rules and analysis
 
 There are four variations of this available:
-- How to set up a Gradle [project for **Java**](https://github.com/jjohannes/gradle-project-setup-howto/tree/main)
-- How to set up a Gradle [project for **Android**](https://github.com/jjohannes/gradle-project-setup-howto/tree/android)
-- How to set up a Gradle [project for **Java Module System**](https://github.com/jjohannes/gradle-project-setup-howto/tree/java_module_system)
-- How to set up a Gradle [project for **Kotlin**](https://github.com/jjohannes/gradle-project-setup-howto/tree/kotlin)
-- How to set up a Gradle [project for **Java** and **Spring Boot**](https://github.com/jjohannes/gradle-project-setup-howto/tree/spring-boot)
+- How to set up a Gradle [project for **Java**](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_java)
+- How to set up a Gradle [project for **Android**](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_android)
+- How to set up a Gradle [project for **Java Module System**](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_java_module_system)
+- How to set up a Gradle [project for **Kotlin**](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_kotlin)
+- How to set up a Gradle [project for **Java** and **Spring Boot**](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_spring_boot)
 
 The structure though, is good for any kind of project you may build with Gradle (**Kotlin**, **Groovy**, **Scala**, ...)
 
@@ -150,6 +150,9 @@ The task generates a [PlantUML](https://plantuml.com) file that you can render, 
 - [Dependency Analysis: How to remove dependencies added by plugins?](https://github.com/jjohannes/gradle-project-setup-howto/issues/15)
 - [How many convention plugins should be used?](https://github.com/jjohannes/gradle-project-setup-howto/issues/10)
 - [How to customize the wrapper task?](https://github.com/jjohannes/gradle-project-setup-howto/issues/12)
+- [What are good practices when publishing libraries (API consistency, multiple variants, transitives)?](https://github.com/jjohannes/gradle-project-setup-howto/issues/17)
 - [Kotlin branch: Why is there a special handling of kotlin-stdlib?](https://github.com/jjohannes/gradle-project-setup-howto/issues/13)
+- [Kotlin branch: How to avoid the 'The Kotlin Gradle plugin was loaded multiple times' error?](https://github.com/jjohannes/gradle-project-setup-howto/issues/19)
+- [Spring branch: Why does the example not use the Spring Boot Dependency Management plugin?](https://github.com/jjohannes/gradle-project-setup-howto/issues/20)
 
 More questions or points you would like to discuss? Please [open an issue](https://github.com/jjohannes/gradle-project-setup-howto/issues/new).
