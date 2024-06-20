@@ -1,12 +1,12 @@
 version: 2
 updates:
   - package-ecosystem: "gradle"
-    directory: "/gradle/plugins"
+    directory: "."
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
   - package-ecosystem: "gradle"
-    directory: "/gradle"
+    directory: "/gradle/plugins"
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
