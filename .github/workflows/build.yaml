@@ -1,5 +1,5 @@
 name: Build Plugin
-on: [ push, pull_request ]
+on: [ push ]
 env:
   BUILD_CACHE_USER: ${{ secrets.BUILD_CACHE_USER }}
   BUILD_CACHE_PWD: ${{ secrets.BUILD_CACHE_PWD }}
