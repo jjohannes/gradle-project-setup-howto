@@ -1,24 +1,24 @@
 plugins {
-    id("org.example.java-library-published")
+    id("org.example.gradle.component.library")
+    id("org.example.gradle.feature.publish")
 }
 
 dependencies {
-    api("com.fasterxml.jackson.core:jackson-annotations")
-    api("com.fasterxml.jackson.core:jackson-databind")
-    api("com.google.guava:guava")
-    api("jakarta.inject:jakarta.inject-api")
-    api("org.json:json")
-    api("org.opensaml:opensaml")
+    api(libs.guava)
+    api(libs.jackson.annotations)
+    api(libs.jackson.databind)
+    api(libs.jakarta.inject.api)
+    api(libs.opensaml)
+    api(libs.org.json)
+    implementation(libs.httpcomponents.fluent.hc)
+    implementation(libs.jackson.core)
+    implementation(libs.jackson.datatype.json.org)
+    implementation(libs.jackson.datatype.jsr310)
+    implementation(libs.jakarta.activation)
+    implementation(libs.jakarta.mail.impl)
+    implementation(libs.org.reflections)
+    implementation(libs.slf4j.api)
 
-    implementation("com.fasterxml.jackson.core:jackson-core")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-json-org")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
-    implementation("com.sun.activation:jakarta.activation")
-    implementation("com.sun.mail:jakarta.mail")
-    implementation("org.apache.httpcomponents:fluent-hc")
-    implementation("org.reflections:reflections")
-    implementation("org.slf4j:slf4j-api")
-
-    testImplementation("org.assertj:assertj-core")
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation(libs.assertj.core)
+    testImplementation(libs.junit.jupiter.api)
 }

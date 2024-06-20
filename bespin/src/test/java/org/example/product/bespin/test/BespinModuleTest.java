@@ -1,9 +1,9 @@
 package org.example.product.bespin.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.example.product.corellia.fixtures.CorelliaModuleFixture;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BespinModuleTest {
 

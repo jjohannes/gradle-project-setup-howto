@@ -1,14 +1,13 @@
 package org.example.product.kashyyyk;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import org.junit.jupiter.api.Test;
 
 public class KashyyykModuleTest {
 
@@ -17,7 +16,7 @@ public class KashyyykModuleTest {
         KashyyykModule module = new KashyyykModule();
         assertSame(5, module.calculateSomethingImportant());
 
-        try(InputStream hello = KashyyykModuleTest.class.getResourceAsStream("testHello.txt")) {
+        try (InputStream hello = KashyyykModuleTest.class.getResourceAsStream("testHello.txt")) {
             String message = new BufferedReader(new InputStreamReader(hello)).readLine();
             assertEquals("TEST HELLO!", message);
         }

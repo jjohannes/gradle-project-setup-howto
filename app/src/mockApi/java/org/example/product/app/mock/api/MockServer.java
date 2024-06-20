@@ -9,5 +9,4 @@ public class MockServer {
         new MainModule();
         return ImmutableList.of("a", "b", "x", "y");
     }
-
 }

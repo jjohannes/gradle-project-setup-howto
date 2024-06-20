@@ -1,13 +1,11 @@
-plugins {
-    id("org.example.java-library")
-}
+plugins { id("org.example.gradle.component.library") }
 
+// For isolated-projects, use 'requireCapability' notation instead of testFixtures(...)
 dependencies {
-    api(project(":corellia"))
+    api(projects.corellia)
+    implementation(projects.coruscant)
+    implementation(libs.velocity.engine.core)
 
-    implementation(project(":coruscant"))
-    implementation("org.apache.velocity:velocity-engine-core")
-
-    testImplementation(testFixtures(project(":corellia")))
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation(projects.corellia) { capabilities { requireCapability("${project.group}:$name-test-fixtures") } }
+    testImplementation(libs.junit.jupiter.api)
 }

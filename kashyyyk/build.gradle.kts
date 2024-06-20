@@ -1,13 +1,10 @@
-plugins {
-    id("org.example.java-library")
-}
+plugins { id("org.example.gradle.component.library") }
 
 dependencies {
-    api(project(":naboo"))
-    api(project(":tatooine"))
+    api(projects.naboo)
+    api(projects.tatooine)
+    implementation(projects.bespin)
+    implementation(projects.kamino)
 
-    implementation(project(":bespin"))
-    implementation(project(":kamino"))
-
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation(libs.junit.jupiter.api)
 }

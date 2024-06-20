@@ -1,145 +1,187 @@
 # How to set up a larger Gradle project
 
-This repo shows one possibility to structure a Gradle project when you want:
+This repo contains a Gradle project structure with:
 
 - **Centralized and maintainable** build configuration and custom build logic
 - **No dependency hell** through smart dependency management with dependency rules and analysis
 
-There are four variations of this available:
-- How to set up a Gradle [project for **Java**](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_java)
-- How to set up a Gradle [project for **Android**](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_android)
-- How to set up a Gradle [project for **Java Module System**](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_java_module_system)
-- How to set up a Gradle [project for **Kotlin**](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_kotlin)
-- How to set up a Gradle [project for **Java** and **Spring Boot**](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_spring_boot)
-
+The `main` branch contains everything for a traditional Java project.
 The structure though, is good for any kind of project you may build with Gradle (**Kotlin**, **Groovy**, **Scala**, ...)
 
-This is following the same patterns as [idiomatic-gradle](https://github.com/jjohannes/idiomatic-gradle) but is closer to a _full_ setup that also takes the aspect of continuously changing dependencies into account.
+> [!NOTE]
+> There are adjustments on other branches of this repo that show how the setup can be varied:
+> - 🧩 [**Java Module System**](https://github.com/jjohannes/gradle-project-setup-howto/tree/java_module_system)
+> - 🦩 [**Kotlin**](https://github.com/jjohannes/gradle-project-setup-howto/tree/kotlin)
+> - 🤖 [**Android**](https://github.com/jjohannes/gradle-project-setup-howto/tree/android)
+> - 🍃 [project for **Java** and **Spring Boot**](https://github.com/jjohannes/gradle-project-setup-howto/tree/spring-boot)
 
-Pick one of these similar videos to get a quick overview:
-
-[<img src="https://onepiecesoftware.github.io/img/videos/15-1.png" width="260">](https://www.youtube.com/watch?v=vkwPB5JUj9g&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-[<img src="https://onepiecesoftware.github.io/img/videos/15-2.png" width="260">](https://www.youtube.com/watch?v=Gt_I40SZPNU&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-[<img src="https://onepiecesoftware.github.io/img/videos/15-3.png" width="260">](https://www.youtube.com/watch?v=uRieSnovlVc&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-
-And here is an overview in a thread on Mastodon:
-
-[<img src="https://onepiecesoftware.github.io/img/social/110829963077007215.png">](https://mastodon.social/@jendrik/110829963077007215)
+This is following the same patterns as [idiomatic-gradle](https://github.com/jjohannes/idiomatic-gradle)
+but is closer to a _full_ setup that also takes the aspect of continuously changing dependencies into account.
 
 ## Project Overview
 
-Different structuring concerns are summarized in commits if you like to explore things one-by-one:
+### Folder structure
 
-### Any kind of project
+```
+├── settings.gradle.kts     - Entry point file for Gradle to work with the project struture
+├── $module-name            - Each Module of the software has a folder
+│   ├── src                   - Production code and test code
+│   └── build.gradle.kts      - Defines the type of the Module and its dependencies
+├── gradle                  - Contains the build configuraton
+│   ├── version.txt           - Defines the version of the software all Modules share
+│   ├── jdk-version.txt       - Defines Java version used in the project 
+│   ├── libs.versions.toml    - Version catalog defines versions of 3rd party modules
+│   ├── versions/build...     - 3rd party version restirctions if needed
+│   ├── aggregation/build...  - Aggregated reports for the whole project
+│   ├── plugins/build...      - Define which 3rd party plugins are used and their versions
+│   │   └── src/main/kotlin   - Individual plugin configurations (aka Convention Plugins)
+│   └── wrapper               - Define Gradle version used via Gradle Wrapper
+├── gradle.properties       - Gradle startup parameters and global switches
+├── build.gradle.kts        - Use plugins for checks and auto-formating on the whole project
+└── .github                 - Integrate with GitHub Actions CI system
+```
 
-- [Folder structure](https://github.com/jjohannes/gradle-project-setup-howto/commit/folder-structure)  
-  A basic structure with all the places to put build configuration.
-  Puts everything, which is not a dependency declaration of a concrete subproject, into the `gradle/` folder.
-  (Which is a choice, you can put things in different places and still follow the rest of this setup.)
-- [Settings plugin](https://github.com/jjohannes/gradle-project-setup-howto/commit/settings-plugin)  
-  A settings convention plugin to configure the project structure, repositories, and build locations.
-  Uses [org.gradlex:build-parameters](https://github.com/gradlex-org/build-parameters) to pass environment variables into the build.
-  - [Video: The Settings File](https://www.youtube.com/watch?v=Ajs8pTbg8as&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-  - [Video: Settings Plugins](https://www.youtube.com/watch?v=tlx3tzuLSWk&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-- [Dependency rules](https://github.com/jjohannes/gradle-project-setup-howto/commit/dependency-rules)  
-  Dependency rules to add more metadata as input to dependency resolution where needed.
-  (uses [org.gradlex:java-ecosystem-capabilities](https://github.com/gradlex-org/java-ecosystem-capabilities)).
-  - [Video: Capability Conflicts + Component Metadata Rules](https://www.youtube.com/watch?v=5g20kbbqBFk&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-- [Base convention plugins](https://github.com/jjohannes/gradle-project-setup-howto/commit/base-plugins)  
-  Configure things shared by all projects - like setting a version and consistent resolution.
+- [Video: The Settings File](https://www.youtube.com/watch?v=Ajs8pTbg8as&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+
+### The $module-name/build.gradle.kts files
+
+Select a _Component Type_ by using the corresponding convention plugin and define the dependencies of the module.
+For example:
+
+```
+plugins { id("org.example.gradle.component.library") } // This is a 'library'
+
+dependencies {
+    api(projects.coruscant)     // Depends on another Module of our project
+    implementation(libs.guava)  // Depends on a 3rd party Module
+}
+```
+
+- [Video: The Build Files](https://www.youtube.com/watch?v=OKjE_Lt_66U&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [Video: Declaring Dependencies](https://www.youtube.com/watch?v=igug9tbl4J4&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+
+### The Convention Plugins
+
+- [Video: (Convention) Plugins](https://www.youtube.com/watch?v=N95YI-szd78&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+
+Convention plugins are used to configure each aspect of the build centrally. To keep it structured, we put
+them into four categories: _Base_, _Feature_, _Check_, _Report_. Below you find all plugins listed. For more details,
+inspect the corresponding plugin files. _Understanding Gradle_ videos that cover related topics are linked below
+each plugin file.
+
+#### Base Plugins
+
+_Base_ plugins need to be used in all Modules to establish a certain foundation for the setup.
+For example, the same dependency management configuration should be applied everywhere to consistently use the same
+3rd party libraries everywhere.
+
+- [org.example.gradle.base.identity.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.base.identity.gradle.kts)
+- [org.example.gradle.base.lifecycle.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.base.lifecycle.gradle.kts)
+  - [Video: Lifecycle Tasks](https://www.youtube.com/watch?v=sOo0p4Gpjcc&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [org.example.gradle.base.lifecycle.root.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.base.lifecycle.root.gradle.kts)
+- [org.example.gradle.base.dependency-rules.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.base.dependency-rules.gradle.kts)
   - [Video: Dependency Version Conflicts + Consistent Resolution](https://www.youtube.com/watch?v=YYWhfy6c2YQ&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-- [Versions](https://github.com/jjohannes/gradle-project-setup-howto/commit/versions)  
-  Put all versions into a _platform_; use BOMs where available for libraries that consist of multiple components.
-  - [Video: Centralizing Dependency Versions](https://www.youtube.com/watch?v=8044F5gc1dE&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-- [Java base convention plugins](https://github.com/jjohannes/gradle-project-setup-howto/commit/java-base-plugins)  
-  Configure Java project specifics for compilation and testing in several convention plugins.
-  - [Video: The Build Files](https://www.youtube.com/watch?v=OKjE_Lt_66U&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-  - [Video: (Convention) Plugins](https://www.youtube.com/watch?v=N95YI-szd78&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+  - [Video: Capability Conflicts + Component Metadata Rules](https://www.youtube.com/watch?v=5g20kbbqBFk&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+
+#### Feature Plugins
+
+Each _feature_ plugin configures one aspect of building the software – like _compiling code_ or _testing code_.
+
+- [org.example.gradle.feature.repositories.settings.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.repositories.settings.gradle.kts)
+- [org.example.gradle.feature.project-structure.settings.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.project-structure.settings.gradle.kts)
+  - [Video: Settings Plugins](https://www.youtube.com/watch?v=tlx3tzuLSWk&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [org.example.gradle.feature.compile-java.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.compile-java.gradle.kts)
   - [Video: Source Sets](https://www.youtube.com/watch?v=74PDtHkS_w4&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+  - [Video: The JavaCompile Task](https://www.youtube.com/watch?v=wFewehz6rW8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [org.example.gradle.feature.javadoc.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.javadoc.gradle.kts)
+- [org.example.gradle.feature.test.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.test.gradle.kts)
   - [Video: Configuring Testing](https://www.youtube.com/watch?v=7f_gBvGQN_0&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
   - [Video: The Test Task](https://www.youtube.com/watch?v=YJjNQJSaFww&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-  - [Video: The JavaCompile Task](https://www.youtube.com/watch?v=wFewehz6rW8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-- [Java library convention plugins](https://github.com/jjohannes/gradle-project-setup-howto/commit/java-library-plugins)  
-  Combine convention plugins to different concrete _library_ types that you use in your `build.gradle.kts` files.
-  Test Fixtures
-  - (Optional) [Video: Publishing Libraries](https://www.youtube.com/watch?v=8z5KFCLZDd0&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-- [Java application convention plugins](https://github.com/jjohannes/gradle-project-setup-howto/commit/java-application-plugins)  
-  A specific project is the `:app` project which assembles the final application.
-  This is a good place to also aggregate other information like _test result_ and _coverage reports_ for the whole project.
-  It is also the place where you often need custom tasks - e.g. to generate additional resources.
-  - [Video: Aggregating Custom Artifacts](https://www.youtube.com/watch?v=2gPJD0mAres&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [org.example.gradle.feature.test-end-to-end.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.test-end-to-end.gradle.kts)
+  - [Video: Feature Variants](https://www.youtube.com/watch?v=XCzyUESaBHQ&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [org.example.gradle.feature.test-fixtures.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.test-fixtures.gradle.kts)
+  - [Video: Test Fixtures](https://www.youtube.com/watch?v=fSRN6YKa5B0&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [org.example.gradle.feature.war.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.war.gradle.kts)
+- [org.example.gradle.feature.checksum.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.checksum.gradle.kts)
   - [Video: Configuring Task Inputs and Outputs](https://www.youtube.com/watch?v=Pj9hSRauiQM&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
   - [Video: Implementing Tasks and Extensions](https://www.youtube.com/watch?v=wrgyUKC7vOY&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-  - [Video: Feature Variants](https://www.youtube.com/watch?v=XCzyUESaBHQ&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-  - [Video: Test and Code Coverage Reporting](https://www.youtube.com/watch?v=uZvzWlP9BYE&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-  - [Video: Detect and Resolve Collisions on a Classpath](https://www.youtube.com/watch?v=KocTqF0hO_8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-- [Lifecycle Tasks and Root project](https://github.com/jjohannes/gradle-project-setup-howto/commit/lifecycle-tasks)  
-  Add lifecycle tasks through a convention plugin for the root `build.gradle.kts`.
-  - [Video: Lifecycle Tasks](https://www.youtube.com/watch?v=sOo0p4Gpjcc&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-- [Customized dependency analysis](https://github.com/jjohannes/gradle-project-setup-howto/commit/analyze-dependencies)  
-  You have to take care of your dependencies and versions regularly:
-  When your project evolves and when new versions of external dependencies are released.
-  Team members not so familiar with the build setup might need to touch only these places.
-  Put some dependency analysis in place to help everyone to keep the build tidy over time.
-  - Use the superb [dependency-analysis-gradle-plugin](https://github.com/autonomousapps/dependency-analysis-android-gradle-plugin)
-  - Write some small custom analysis code that produces actionable error messages that fit your project structure
-  - [Video: Clean Compile Classpaths with the Dependency Analysis Plugin](https://www.youtube.com/watch?v=Lipf5piizZc&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-- [gradle.properties](https://github.com/jjohannes/gradle-project-setup-howto/commit/gradle-properties)  
-  Tune Gradle performance by setting `gradle.properties`.
-  - [Video: The JavaCompile Task](https://www.youtube.com/watch?v=wFewehz6rW8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [org.example.gradle.feature.publish.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.publish.gradle.kts)
+  - [Video: Publishing Libraries](https://www.youtube.com/watch?v=8z5KFCLZDd0&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [org.example.gradle.feature.use-all-catalog-versions.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.use-all-catalog-versions.gradle.kts)
+  - [Video: Centralizing Dependency Versions](https://www.youtube.com/watch?v=8044F5gc1dE&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [org.example.gradle.feature.build-cache.settings.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.build-cache.settings.gradle.kts)
   - [Video: Caching](https://www.youtube.com/watch?v=nHb0kIcTrFE&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
 
-### Any kind of project (except Java Module System)
+#### Report Plugins
 
-- [Declare dependencies](https://github.com/jjohannes/gradle-project-setup-howto/commit/declare-dependencies)  
-  Declare dependencies between subprojects and external components in the `build.gradle.kts` files.
-  - [Video: Declaring Dependencies](https://www.youtube.com/watch?v=igug9tbl4J4&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-  - The example has quite some conflicts which are correctly resolved thanks to our dependency rules. Explore in a build scan: https://scans.gradle.com/s/hpjtkjwwhcpzu/dependencies
+_Report_ plugins add reporting functionality to discover potential issues with the software or the build setup.
+They may generate data that is picked up and displayed by external tools like
+[Develocity](https://scans.gradle.com/) or [Dependency Track](https://dependencytrack.org/).
+More reporting tools may be integrated in this category.
+Report plugins are not necessarily needed to build a working software.
 
-### Android projects
+- [org.example.gradle.report.code-coverage.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.report.code-coverage.gradle.kts)
+  - [Video: Aggregating Custom Artifacts](https://www.youtube.com/watch?v=2gPJD0mAres&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+  - [Video: Test and Code Coverage Reporting](https://www.youtube.com/watch?v=uZvzWlP9BYE&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [org.example.gradle.report.plugin-analysis.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.report.plugin-analysis.gradle.kts)
+- [org.example.gradle.report.sbom.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.report.sbom.gradle.kts)
+- [org.example.gradle.report.develocity.settings.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.report.develocity.settings.gradle.kts)
 
-- [Android plugins](https://github.com/jjohannes/gradle-project-setup-howto/commit/android-plugins)  
-  Here, the _Application plugins_ are changed into _Android plugins_ and adjusted to target Android App development using the Android Gradle Plugins.
-  - This repo focuses on general project structuring and dependency management with Gradle and does not go into many Android specifics. I recommend to check out https://github.com/android/nowinandroid in addition for that.
+#### Check Plugins
 
-### Java Module System projects
+Check plugins help with keeping the software maintainable over time.
+They check things like the dependency setup or code formatting.
+More style checkers or static code analysis tools could be added in this category.
+Check plugins are not necessarily needed to build a working software.
 
-- [module-info.java files](https://github.com/jjohannes/gradle-project-setup-howto/commit/module-info-files)  
-  Use `module-info.java` files to develop Java Modules. These files already include dependency information.
-- [Java Module System Plugins](https://github.com/jjohannes/gradle-project-setup-howto/commit/java-module-system-plugins)  
-  Use my _Java Module System_ plugins to enable Gradle to extract the dependency information from the `module-info.java` files and
-  to extend the _dependency rules_ to for Java Module specific information.
-  - [`id("org.gradlex.java-module-dependencies")`](https://github.com/gradlex-org/java-module-dependencies)
-  - [`id("org.gradlex.java-module-testing")`](https://github.com/gradlex-org/java-module-testing)
-  - [`id("org.gradlex.extra-java-module-info")`](https://github.com/gradlex-org/extra-java-module-info)
-- [Customized dependency analysis (Java Modules)](https://github.com/jjohannes/gradle-project-setup-howto/commit/analyze-requires)  
-  Adjusts the above for Java Modules.
-  The [java-module-dependencies](https://github.com/jjohannes/java-module-dependencies) plugin already brings some analysis tasks.
-- [jpackage Task](https://github.com/jjohannes/gradle-project-setup-howto/commit/jpackage)  
-  If the project only uses _real_ modules (i.e. everything is, or gets patched to be, a module with `module-info`) you can add a task to use `jpackage` to package the application.
+- [org.example.gradle.check.dependencies.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.check.dependencies.gradle.kts)
+  - [Video: Dependency Analysis](https://www.youtube.com/watch?v=Lipf5piizZc&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+  - [Video: Detect and Resolve Collisions on a Classpath](https://www.youtube.com/watch?v=KocTqF0hO_8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
+- [org.example.gradle.check.dependencies.root.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.check.dependencies.root.gradle.kts)
+- [org.example.gradle.check.format-gradle.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.check.format-gradle.gradle.kts)
+- [org.example.gradle.check.format-gradle.root.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.check.format-gradle.root.gradle.kts)
+- [org.example.gradle.check.format-java.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.check.format-java.gradle.kts)
 
-### Kotlin JVM projects
-- [Add Kotlin plugin and Kotlin specific compile configuration](https://github.com/jjohannes/gradle-project-setup-howto/commit/kotlin-jvm-plugin)  
-  The setup is similar to the Java project, only that we add the Kotlin JVM plugin on top.
-  The plugins that were called `org.example.java` were renamed to `org.example.kotlin` (which makes no difference in the functionality).
+#### Component Plugins
 
-## Overview of your Convention Plugins
+_Component_ plugins combine plugins from all categories above to define _Component Types_ that are then used in the `build.gradle.kts`
+files of the individual Modules of our software.
+ 
+- [org.example.gradle.component.application.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.component.application.gradle.kts)
+- [org.example.gradle.component.library.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.component.library.gradle.kts)
 
-There is a help task that you can use to get a diagram of the convention plugins defined in the project:
+#### Testing Plugins
 
-`./gradlew :plugins:analysePluginApplicationOrder`
+The [Gradle TestKit](https://docs.gradle.org/current/userguide/test_kit.html) can be used to test plugins.
+This can be helpful to enforce a certain structure, e.g. by testing if each plugin works on its own.
+And if you add custom tasks and advanced logic, you can add tests for that. As example, this project contains one test class:
+[ConventionPluginTest.kt](gradle/plugins/src/test/kotlin/org/example/gradle/test/ConventionPluginTest.kt)
+
+There is also a help task that you can use to get a diagram of the convention plugins defined in the project:
+
+`./gradlew :aggregation:analysePluginApplicationOrder`
 
 The task generates a [PlantUML](https://plantuml.com) file that you can render, for example, with the PlantUML IntelliJ plugin.
 
-<img src="plugins.png">
+### Continuously build and report using GitHub Actions and Dependabot
+
+- [build.yaml](.github/workflows/build.yaml) Configure GitHub to run builds and produce reports. Integrates with:
+  - [Develocity Build Scans](https://scans.gradle.com/)
+  - [Gradle Remote Build Cache](https://docs.gradle.com/build-cache-node/)
+  - [Reposilite](https://reposilite.com/)
+  - [Dependency Track](https://dependencytrack.org/)
+- [dependabot.yml](.github/dependabot.yml) Configure [Dependabot](https://github.com/dependabot) to automatically get version updates
 
 ## Notes
 
 - If you have a question, please ask in an [issue](https://github.com/jjohannes/gradle-project-setup-howto/issues/new).
 - The concrete things done in all places (custom tasks, components used in dependencies, additional plugins applied, etc.) are just examples.
   If you, for example, need to use additional Gradle plugins you can add these in the corresponding place, keeping the suggested structure.
-- This setup uses a _platform project_ to centralize dependency versions. An alternative approach is to use a _dependency version catalog_.
-  If you prefer to use a catalog, because it is the better fit in your case, you can still follow the setup proposed here (just without the `gradle/platform` project).
+- There was a different version of this repository I initially published in 2022. The setup was more complex by splitting
+  the Gradle configuration over move folders which required more boilerplate. After using a setup like his in several
+  projects, I felt that the setup was overly complex without adding much value. I ended up striping it down to what this
+  repository is now. The older version is still accessible on the
+  [2022_java](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_java) branch.
 
 ## FAQ
 

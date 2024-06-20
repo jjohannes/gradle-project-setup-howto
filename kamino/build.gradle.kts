@@ -1,13 +1,13 @@
 plugins {
-    id("org.example.java-library-published")
+    id("org.example.gradle.component.library")
+    id("org.example.gradle.feature.publish")
 }
 
 dependencies {
-    api(project(":coruscant"))
-    api("org.jboss.resteasy:resteasy-core")
+    api(projects.coruscant)
+    api(libs.resteasy.core)
+    implementation(libs.resteasy.guice)
+    implementation(libs.resteasy.jackson2.provider)
 
-    implementation("org.jboss.resteasy:resteasy-guice")
-    implementation("org.jboss.resteasy:resteasy-jackson2-provider")
-
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation(libs.junit.jupiter.api)
 }

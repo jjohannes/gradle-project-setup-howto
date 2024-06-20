@@ -1,15 +1,15 @@
 plugins {
-    id("org.example.java-library-with-test-fixtures")
+    id("org.example.gradle.component.library")
+    id("org.example.gradle.feature.test-fixtures")
 }
 
 dependencies {
-    api("org.apache.poi:poi")
+    api(libs.poi)
+    implementation(libs.commons.io)
+    implementation(libs.poi.ooxml)
 
-    implementation("commons-io:commons-io")
-    implementation("org.apache.poi:poi-ooxml")
+    testImplementation(libs.junit.jupiter.api)
 
-    testFixturesApi("com.google.code.findbugs:jsr305")
-    testFixturesApi("com.google.guava:guava")
-
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testFixturesApi(libs.guava)
+    testFixturesApi(libs.jsr305)
 }

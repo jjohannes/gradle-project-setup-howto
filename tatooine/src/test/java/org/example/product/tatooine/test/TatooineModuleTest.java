@@ -1,8 +1,8 @@
 package org.example.product.tatooine.test;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertSame;
+
+import org.junit.jupiter.api.Test;
 
 public class TatooineModuleTest {
 

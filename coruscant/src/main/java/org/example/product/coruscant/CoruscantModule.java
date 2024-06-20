@@ -7,19 +7,6 @@ import com.fasterxml.jackson.datatype.jsonorg.JsonOrgModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import org.apache.http.client.fluent.Request;
-import org.json.JSONArray;
-import org.opensaml.saml2.metadata.EntityDescriptor;
-import org.reflections.Reflections;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.inject.Inject;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.util.ByteArrayDataSource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +14,18 @@ import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.regex.Pattern;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.inject.Inject;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.util.ByteArrayDataSource;
+import org.apache.http.client.fluent.Request;
+import org.json.JSONArray;
+import org.opensaml.saml2.metadata.EntityDescriptor;
+import org.reflections.Reflections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * I am published and therefore I have Javadoc!
@@ -40,7 +39,7 @@ public class CoruscantModule {
      */
     public CoruscantModule() {
         LOGGER.info("Coruscant Module created");
-        try(InputStream hello = CoruscantModule.class.getResourceAsStream("hello.txt")) {
+        try (InputStream hello = CoruscantModule.class.getResourceAsStream("hello.txt")) {
             System.out.println(new BufferedReader(new InputStreamReader(hello)).readLine());
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -1,18 +1,34 @@
 name: Build Plugin
 on: [ push, pull_request ]
+env:
+  BUILD_CACHE_USER: ${{ secrets.BUILD_CACHE_USER }}
+  BUILD_CACHE_PWD: ${{ secrets.BUILD_CACHE_PWD }}
+  PUBLISHING_REPOSITORY_URL: ${{ secrets.PUBLISHING_REPOSITORY_URL }}
+  PUBLISHING_REPOSITORY_USER: ${{ secrets.PUBLISHING_REPOSITORY_USER }}
+  PUBLISHING_REPOSITORY_PWD: ${{ secrets.PUBLISHING_REPOSITORY_PWD }}
 jobs:
   gradle-build:
     runs-on: ubuntu-latest
     steps:
-      - name: git clone
-        uses: actions/checkout@v3.5.2
-      - name: Set up JDK
-        uses: actions/setup-java@v3.11.0
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
-      - name: gradle build
-        id: gradle
-        uses: gradle/gradle-build-action@v2.4.2
+          java-version-file: gradle/jdk-version.txt
+      - uses: gradle/actions/setup-gradle@v3
         with:
-          arguments: build
+          cache-read-only: false
+      - run: "./gradlew qualityCheck"
+      - run: "./gradlew test"
+      - run: "./gradlew testEndToEnd"
+      - run: "./gradlew testEndToEndSlow"
+      - run: "./gradlew cyclonedxBom"
+      - run: "./gradlew publish"
+      - uses: DependencyTrack/gh-upload-sbom@v3
+        with:
+          apiKey: ${{ secrets.DEPENDENCYTRACK_APIKEY }}
+          bomFilename: "gradle/aggregation/build/reports/sbom/bom.xml"
+          serverHostname: ${{ secrets.DEPENDENCYTRACK_URL }}
+          projectName: "gradle-project-setup-howto"
+          projectVersion: ${{ github.ref_name }}
+          autoCreate: true

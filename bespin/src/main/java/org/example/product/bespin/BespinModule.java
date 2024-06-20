@@ -1,11 +1,10 @@
 package org.example.product.bespin;
 
-import org.example.product.corellia.CorelliaModule;
-import org.example.product.coruscant.CoruscantModule;
-import org.apache.velocity.io.VelocityWriter;
-
 import java.io.FileWriter;
 import java.io.IOException;
+import org.apache.velocity.io.VelocityWriter;
+import org.example.product.corellia.CorelliaModule;
+import org.example.product.coruscant.CoruscantModule;
 
 public class BespinModule {
 

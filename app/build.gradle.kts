@@ -1,32 +1,27 @@
-plugins {
-    id("org.example.application")
-}
+plugins { id("org.example.gradle.component.application") }
 
-application {
-    mainClass.set("org.example.product.app.Application")
-}
+application { mainClass = "org.example.product.app.Application" }
 
+// Complicated notation for 'capabilities' - upvote: https://github.com/gradle/gradle/issues/25629
 dependencies {
-    providedCompile("jakarta.servlet:jakarta.servlet-api")
+    implementation(projects.bespin)
+    implementation(projects.corellia)
+    implementation(projects.kamino)
+    implementation(projects.kashyyyk)
+    implementation(projects.naboo)
+    implementation(projects.tatooine)
+    implementation(libs.guice)
+    implementation(libs.guice.servlet)
+    implementation(libs.slf4j.api)
+    runtimeOnly(libs.slf4j.simple)
+    providedCompile(libs.jakarta.servlet.api)
 
-    implementation(project(":bespin"))
-    implementation(project(":corellia"))
-    implementation(project(":kamino"))
-    implementation(project(":kashyyyk"))
-    implementation(project(":naboo"))
-    implementation(project(":tatooine"))
-    implementation("com.google.inject.extensions:guice-servlet")
-    implementation("com.google.inject:guice")
-    implementation("org.slf4j:slf4j-api")
+    mockApiImplementation(projects.app)
+    mockApiImplementation(libs.guava)
 
-    mockApiImplementation(project(path))
-    mockApiImplementation("com.google.guava:guava")
+    testImplementation(libs.junit.jupiter.api)
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
-
-    endToEndTestImplementation(project(path)) { capabilities { requireCapabilities("${project.group}:${project.name}-mock-api") } }
-    endToEndTestImplementation("com.google.guava:guava")
-    endToEndTestImplementation("org.junit.jupiter:junit-jupiter-api")
-
-    runtimeOnly("org.slf4j:slf4j-simple")
+    testEndToEndImplementation(projects.app) { capabilities { requireCapability("${project.group}:$name-mock-api") } }
+    testEndToEndImplementation(libs.guava)
+    testEndToEndImplementation(libs.junit.jupiter.api)
 }

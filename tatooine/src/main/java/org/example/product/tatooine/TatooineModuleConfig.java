@@ -19,5 +19,4 @@ public class TatooineModuleConfig {
     public TatooineModuleConfig provide() {
         return new TatooineModuleConfig();
     }
-
 }

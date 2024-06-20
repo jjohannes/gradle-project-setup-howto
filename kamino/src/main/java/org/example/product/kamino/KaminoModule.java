@@ -26,10 +26,8 @@ public class KaminoModule {
      * @return all the important Classes
      */
     public Class<?>[] info() {
-        return new Class[]{
-                ResteasyBootstrap.class,
-                ResteasyJackson2Provider.class,
-                GuiceResteasyBootstrapServletContextListener.class
+        return new Class<?>[] {
+            ResteasyBootstrap.class, ResteasyJackson2Provider.class, GuiceResteasyBootstrapServletContextListener.class
         };
     }
 }
