@@ -20,6 +20,12 @@ jvmDependencyConflicts {
             addApiDependency("com.google.inject:guice")
         }
 
+        module("com.google.guava:guava") {
+            // remove annotation libraries we do not need
+            removeDependency("com.google.j2objc:j2objc-annotations")
+            removeDependency("org.checkerframework:checker-qual")
+        }
+
         align(
             "org.apache.httpcomponents:httpclient",
             "org.apache.httpcomponents:httpmime",
