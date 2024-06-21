@@ -22,7 +22,7 @@ jobs:
       - run: "./gradlew test"
       - run: "./gradlew testEndToEnd"
       - run: "./gradlew testEndToEndSlow"
-      - run: "./gradlew cyclonedxBom"
+      - run: "./gradlew cyclonedxBom --no-configuration-cache"
       - run: "./gradlew publish"
       - uses: DependencyTrack/gh-upload-sbom@v3
         with:
