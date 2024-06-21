@@ -5,6 +5,8 @@ plugins {
     id("org.example.gradle.base.lifecycle")
 }
 
+configurations.aggregateCodeCoverageReportResults { extendsFrom(configurations["internal"]) }
+
 tasks.check {
     // Generate report when running 'check'
     dependsOn(tasks.testCodeCoverageReport)
