@@ -77,7 +77,7 @@ class ConventionPluginTest {
             resteasy-jackson2-provider = { module = "org.jboss.resteasy:resteasy-jackson2-provider" }
             guice = { module = "com.google.inject:guice", version = "5.1.0" }
         """.trimIndent())
-        val buildFile = p.moduleBuildFile("""
+        p.moduleBuildFile("""
             plugins {
                 id("org.example.gradle.component.library")
             }

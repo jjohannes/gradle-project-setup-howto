@@ -19,8 +19,8 @@ class GradleProject {
     private val catalog = file("gradle/libs.versions.toml")
     private val versions = file("gradle/versions/build.gradle.kts")
     private val aggregation = file("gradle/aggregation/build.gradle.kts")
-    private val appBuildFile = file("app/build.gradle.kts")
     private val moduleBuildFile = file("module/build.gradle.kts")
+    private val versionFile = file("gradle/version.txt")
     private val jdkVersionFile = file("gradle/jdk-version.txt")
 
     fun withMinimalStructure(): GradleProject {
@@ -30,6 +30,7 @@ class GradleProject {
             # org.gradle.unsafe.isolated-projects=true
             org.gradle.caching=true
             kotlin.stdlib.default.dependency=false
+            android.useAndroidX=true
         """.trimIndent())
         settingsFile.writeText("""
             plugins {
@@ -52,8 +53,8 @@ class GradleProject {
             [libraries]
             foo = { module = "foo:bar" }
         """.trimIndent())
+        versionFile.writeText("1.0")
         jdkVersionFile.writeText("21")
-        appBuildFile.writeText("""plugins { id("org.example.gradle.component.application") }""")
         file("app/src/main/resources").mkdirs()
         return this
     }
