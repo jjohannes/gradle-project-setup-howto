@@ -24,7 +24,7 @@ poi-ooxml = { module = "org.apache.poi:poi-ooxml" }
 resteasy-core = { module = "org.jboss.resteasy:resteasy-core", version = "4.7.6.Final" }
 resteasy-guice = { module = "org.jboss.resteasy:resteasy-guice" }
 resteasy-jackson2-provider = { module = "org.jboss.resteasy:resteasy-jackson2-provider" }
-slf4j-api = { module = "org.slf4j:slf4j-api", version = "1.7.36" }
+slf4j-api = { module = "org.slf4j:slf4j-api", version = "2.0.13" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version = "1.7.36" }
 solr-solrj = { module = "org.apache.solr:solr-solrj", version = "7.7.3" }
 typesafeconfig-guice = { module = "com.github.racc:typesafeconfig-guice", version = "0.1.0" }
