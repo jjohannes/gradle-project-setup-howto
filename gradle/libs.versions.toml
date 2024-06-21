@@ -6,7 +6,7 @@ guice = { module = "com.google.inject:guice", version = "5.1.0" }
 guice-servlet = { module = "com.google.inject.extensions:guice-servlet" }
 httpcomponents-fluent-hc = { module = "org.apache.httpcomponents:fluent-hc", version = "4.5.13" }
 jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version = "2.13.5" }
-jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version = "2.13.5" }
+jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version = "2.17.1" }
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind" }
 jackson-datatype-json-org = { module = "com.fasterxml.jackson.datatype:jackson-datatype-json-org" }
 jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" }
