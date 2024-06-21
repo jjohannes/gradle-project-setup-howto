@@ -1,8 +1,5 @@
 plugins { id("org.gradle.java") }
 
-// Publish/build with Javadoc
-java { withJavadocJar() }
-
 tasks.withType<Javadoc>().configureEach {
     options {
         this as StandardJavadocDocletOptions
@@ -10,3 +7,5 @@ tasks.withType<Javadoc>().configureEach {
         addStringOption("Xwerror", "-Xdoclint:all,-missing")
     }
 }
+
+tasks.named("qualityCheck") { dependsOn(tasks.withType<Javadoc>()) }

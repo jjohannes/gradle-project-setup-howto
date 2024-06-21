@@ -35,9 +35,6 @@ tasks.withType<AbstractArchiveTask>().configureEach {
     dirPermissions { unix("0775") }
 }
 
-// Publish/build with sources
-java { withSourcesJar() }
-
 // Tweak 'lifecycle tasks': These are the tasks in the 'build' group that are used in daily
 // development. Under normal circumstances, these should be all the tasks developers needs
 // in their daily work.
