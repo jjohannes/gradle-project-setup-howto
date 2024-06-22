@@ -1,5 +1,5 @@
 [versions]
-assertj = "3.22.0"
+assertj = "3.26.0"
 guava = "30.1-jre"
 guice = "5.1.0"
 httpcomponents = "4.5.13"
