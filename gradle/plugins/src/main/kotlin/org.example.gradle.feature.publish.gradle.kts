@@ -8,6 +8,14 @@ version = providers.fileContents(isolated.rootProject.projectDirectory.file("gra
 
 // On CI, add timestamp for publishing
 if (providers.environmentVariable("CI").getOrElse("false").toBoolean()) {
+    val gitBranch =
+        providers
+            .exec { commandLine("git", "rev-parse", "--abbrev-ref", "HEAD") }
+            .standardOutput
+            .asText
+            .get()
+            .trim()
+            .let { if (it == "main") "" else "${it}-" }
     val gitCommitTimestamp =
         providers
             .exec { commandLine("git", "log", "-1", "--format=%ad", "--date=format:%Y%m%d%H%M%S") }
@@ -15,7 +23,7 @@ if (providers.environmentVariable("CI").getOrElse("false").toBoolean()) {
             .asText
             .get()
             .trim()
-    version = "$version-$gitCommitTimestamp"
+    version = "$gitBranch$version-$gitCommitTimestamp"
 }
 
 // Publish with sources and Javadoc
