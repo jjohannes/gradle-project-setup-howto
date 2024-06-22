@@ -5,6 +5,8 @@ plugins {
     id("org.example.gradle.base.lifecycle")
 }
 
+configurations.aggregateTestReportResults { extendsFrom(configurations["internal"]) }
+
 tasks.check {
     // Generate report when running 'check'
     dependsOn(tasks.testAggregateTestReport)
