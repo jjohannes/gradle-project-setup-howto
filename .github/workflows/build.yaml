@@ -24,8 +24,9 @@ jobs:
       - run: "./gradlew testEndToEndSlow"
       - run: "./gradlew cyclonedxBom --no-configuration-cache"
       - run: "./gradlew publish"
+        if: ${{ !contains(github.ref, '/') }}
       - uses: DependencyTrack/gh-upload-sbom@v3
-        if: ${{ !contains(github.ref, 'dependabot') }}
+        if: ${{ !contains(github.ref, '/') }}
         with:
           apiKey: ${{ secrets.DEPENDENCYTRACK_APIKEY }}
           bomFilename: "gradle/aggregation/build/reports/sbom/bom.xml"
