@@ -22,7 +22,7 @@ jobs:
       - run: "./gradlew test"
       - run: "./gradlew testEndToEnd"
       - run: "./gradlew testEndToEndSlow"
-      - run: "./gradlew build"
+      - run: "./gradlew check"
       - run: "./gradlew cyclonedxBom --no-configuration-cache"
       - run: "./gradlew publish"
         if: ${{ !contains(github.ref, 'dependabot') }}
