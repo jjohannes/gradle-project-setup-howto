@@ -5,12 +5,34 @@ plugins {
     id("org.example.gradle.base.lifecycle")
 }
 
+// Make aggregation "classpath" use the platform for versions (gradle/versions)
 configurations.aggregateTestReportResults { extendsFrom(configurations["internal"]) }
 
-tasks.check {
-    // Generate report when running 'check'
-    dependsOn(tasks.testAggregateTestReport)
+// Integrate FUNCTIONAL_TEST results into the aggregated UNIT_TEST test results
+tasks.testAggregateTestReport {
+    destinationDirectory = layout.buildDirectory.dir("reports/tests")
+    testResults.from(
+        configurations.aggregateTestReportResults
+            .get()
+            .incoming
+            .artifactView {
+                withVariantReselection()
+                attributes {
+                    attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category.VERIFICATION))
+                    attribute(TestSuiteType.TEST_SUITE_TYPE_ATTRIBUTE, objects.named(TestSuiteType.FUNCTIONAL_TEST))
+                    attribute(TestSuiteTargetName.TEST_SUITE_TARGET_NAME_ATTRIBUTE, objects.named("testEndToEnd"))
+                    attribute(
+                        VerificationType.VERIFICATION_TYPE_ATTRIBUTE,
+                        objects.named(VerificationType.TEST_RESULTS)
+                    )
+                }
+            }
+            .files
+    )
 }
+
+// Generate report when running 'check'
+tasks.check { dependsOn(tasks.testAggregateTestReport) }
 
 // Clear tasks group 'build' from clutter for a clean set of tasks to be used in daily work
 tasks.buildDependents { setGroup(null) }
