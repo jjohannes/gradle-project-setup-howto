@@ -1,4 +1,4 @@
-name: Build Plugin
+name: Build Project
 on: [ push ]
 env:
   BUILD_CACHE_USER: ${{ secrets.BUILD_CACHE_USER }}
