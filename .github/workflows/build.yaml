@@ -25,18 +25,18 @@ jobs:
       - run: "./gradlew check"
       - run: "./gradlew cyclonedxBom --no-configuration-cache"
       - run: "./gradlew publish"
-        if: ${{ !contains(github.ref, 'dependabot') }}
+        if: ${{ !contains(github.ref_name, '/') }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: reports
           path: gradle/aggregation/build/reports
       - uses: DependencyTrack/gh-upload-sbom@v3
-        if: ${{ !contains(github.ref, 'dependabot') }}
+        if: ${{ !contains(github.ref_name, '/') }}
         with:
           apiKey: ${{ secrets.DEPENDENCYTRACK_APIKEY }}
           bomFilename: "gradle/aggregation/build/reports/sbom/bom.xml"
           serverHostname: ${{ secrets.DEPENDENCYTRACK_URL }}
           projectName: "gradle-project-setup-howto"
-          projectVersion: ${{ github.ref }}
+          projectVersion: ${{ github.ref_name }}
           autoCreate: true
