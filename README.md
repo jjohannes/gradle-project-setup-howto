@@ -6,7 +6,8 @@ This repo contains a Gradle project structure with:
 - **No dependency hell** through smart dependency management with dependency rules and analysis
 
 The `main` branch contains everything for a traditional Java project.
-The structure though, is good for any kind of project you may build with Gradle (**Kotlin**, **Groovy**, **Scala**, ...)
+The structure though, is good for any kind of project you may build with Gradle
+(**Kotlin**, **Groovy**, **Scala**, ...).
 
 > [!NOTE]
 > There are adjustments on other branches of this repo that show how the setup can be varied:
@@ -15,7 +16,7 @@ The structure though, is good for any kind of project you may build with Gradle 
 > - 🤖 [**Android**](https://github.com/jjohannes/gradle-project-setup-howto/tree/android)
 > - 🍃 [project for **Java** and **Spring Boot**](https://github.com/jjohannes/gradle-project-setup-howto/tree/spring_boot)
 
-This is following the same patterns as [idiomatic-gradle](https://github.com/jjohannes/idiomatic-gradle)
+This is following similar patterns as [idiomatic-gradle](https://github.com/jjohannes/idiomatic-gradle)
 but is closer to a _full_ setup that also takes the aspect of continuously changing dependencies into account.
 
 ## Project Overview
@@ -31,7 +32,7 @@ but is closer to a _full_ setup that also takes the aspect of continuously chang
 │   ├── version.txt           - Defines the version of the software all Modules share
 │   ├── jdk-version.txt       - Defines Java version used in the project 
 │   ├── libs.versions.toml    - Version catalog defines versions of 3rd party modules
-│   ├── versions/build...     - 3rd party version restirctions if needed
+│   ├── versions/build...     - 3rd party version restrictions if needed
 │   ├── aggregation/build...  - Aggregated reports for the whole project
 │   ├── plugins/build...      - Define which 3rd party plugins are used and their versions
 │   │   └── src/main/kotlin   - Individual plugin configurations (aka Convention Plugins)
@@ -49,7 +50,10 @@ Select a _Component Type_ by using the corresponding convention plugin and defin
 For example:
 
 ```
-plugins { id("org.example.gradle.component.library") } // This is a 'library'
+plugins {
+    id("org.example.gradle.component.library") // This is a 'library'
+    id("org.example.gradle.feature.publish")   // Build feature only in this 'library' Module
+}
 
 dependencies {
     api(projects.coruscant)     // Depends on another Module of our project
@@ -165,12 +169,12 @@ The task generates a [PlantUML](https://plantuml.com) file that you can render, 
 
 ### Continuously build and report using GitHub Actions and Dependabot
 
-- [build.yaml](.github/workflows/build.yaml) Configure GitHub to run builds and produce reports. Integrates with:
-  - [Develocity Build Scans](https://scans.gradle.com/)
+- [build.yaml](.github/workflows/build.yaml) Configure GitHub to run builds and produce reports (👉[inspect](https://github.com/jjohannes/gradle-project-setup-howto/actions/workflows/build.yaml)). Integrates with:
+  - [Develocity Build Scans](https://scans.gradle.com/) (👉[inspect](https://scans.gradle.com/s/h3odwhbjjd2qm))
   - [Gradle Remote Build Cache](https://docs.gradle.com/build-cache-node/)
-  - [Reposilite](https://reposilite.com/)
-  - [Dependency Track](https://dependencytrack.org/)
-- [dependabot.yml](.github/dependabot.yml) Configure [Dependabot](https://github.com/dependabot) to automatically get version updates
+  - [Reposilite](https://reposilite.com/) (👉[inspect](https://repo.onepiece.software/#/snapshots))
+  - [Dependency Track](https://dependencytrack.org/) (👉[inspect](https://dtrack.onepiece.software/) login: guest/guest)
+- [dependabot.yml](.github/dependabot.yml) Configure [Dependabot](https://github.com/dependabot) to automatically get version updates (👉[inspect](https://github.com/jjohannes/gradle-project-setup-howto/pulls/app%2Fdependabot))
 
 ## Notes
 
