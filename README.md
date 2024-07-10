@@ -14,7 +14,7 @@ The structure though, is good for any kind of project you may build with Gradle
 > - 🧩 [**Java Module System**](https://github.com/jjohannes/gradle-project-setup-howto/tree/java_module_system)
 > - 🦩 [**Kotlin**](https://github.com/jjohannes/gradle-project-setup-howto/tree/kotlin)
 > - 🤖 [**Android**](https://github.com/jjohannes/gradle-project-setup-howto/tree/android)
-> - 🍃 [project for **Java** and **Spring Boot**](https://github.com/jjohannes/gradle-project-setup-howto/tree/spring_boot)
+> - 🍃 [**Java** and **Spring Boot**](https://github.com/jjohannes/gradle-project-setup-howto/tree/spring_boot)
 
 This is following similar patterns as [idiomatic-gradle](https://github.com/jjohannes/idiomatic-gradle)
 but is closer to a _full_ setup that also takes the aspect of continuously changing dependencies into account.
