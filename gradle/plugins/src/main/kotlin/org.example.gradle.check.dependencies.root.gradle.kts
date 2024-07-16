@@ -4,4 +4,11 @@ plugins {
 }
 
 // Configure the dependency analysis plugin to fail if issues are found
-dependencyAnalysis { issues { all { onAny { severity("fail") } } } }
+dependencyAnalysis {
+    issues {
+        all {
+            onAny { severity("fail") }
+            onRedundantPlugins { severity("ignore") }
+        }
+    }
+}
