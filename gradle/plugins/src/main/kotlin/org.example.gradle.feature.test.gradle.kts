@@ -1,6 +1,7 @@
 plugins {
     id("org.gradle.jacoco") // Record test coverage data during test execution
     id("org.gradle.java")
+    id("org.gradlex.java-module-testing")
 }
 
 // Configure details for *all* test executions directly on 'Test' task

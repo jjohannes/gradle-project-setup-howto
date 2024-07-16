@@ -1,4 +1,4 @@
-import com.autonomousapps.tasks.ProjectHealthTask
+import org.gradlex.javamodule.dependencies.tasks.ModuleDirectivesScopeCheck
 
 plugins {
     id("org.gradle.java")
@@ -9,10 +9,10 @@ plugins {
 
 tasks.named("qualityCheck") {
     dependsOn(tasks.detectCollisions)
-    dependsOn(tasks.withType<ProjectHealthTask>())
+    dependsOn(tasks.withType<ModuleDirectivesScopeCheck>())
 }
 
 tasks.named("qualityGate") {
     dependsOn(tasks.detectCollisions)
-    dependsOn(tasks.withType<ProjectHealthTask>())
+    dependsOn(tasks.withType<ModuleDirectivesScopeCheck>())
 }
