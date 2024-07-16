@@ -1,4 +1,4 @@
-plugins { id("org.example.gradle.component.library") }
+plugins { id("org.example.gradle.component.android-library") }
 
 dependencies {
     api(projects.naboo)

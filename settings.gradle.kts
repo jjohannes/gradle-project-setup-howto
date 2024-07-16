@@ -1,5 +1,7 @@
 pluginManagement {
     includeBuild("gradle/plugins")
+    repositories.gradlePluginPortal()
+    repositories.google()
 }
 plugins {
     id("org.example.gradle.report.develocity")

@@ -1,7 +1,5 @@
 plugins { id("org.example.gradle.component.application") }
 
-application { mainClass = "org.example.product.app.Application" }
-
 // Complicated notation for 'capabilities' - upvote: https://github.com/gradle/gradle/issues/25629
 dependencies {
     implementation(projects.bespin)
@@ -10,18 +8,16 @@ dependencies {
     implementation(projects.kashyyyk)
     implementation(projects.naboo)
     implementation(projects.tatooine)
+    implementation(libs.android.material)
+    implementation(libs.androidx.appcompat)
     implementation(libs.guice)
     implementation(libs.guice.servlet)
     implementation(libs.slf4j.api)
     runtimeOnly(libs.slf4j.simple)
-    providedCompile(libs.jakarta.servlet.api)
 
-    mockApiImplementation(projects.app)
-    mockApiImplementation(libs.guava)
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.test.monitor)
+    androidTestImplementation(libs.junit4)
 
     testImplementation(libs.junit.jupiter.api)
-
-    testEndToEndImplementation(projects.app) { capabilities { requireCapability("${project.group}:$name-mock-api") } }
-    testEndToEndImplementation(libs.guava)
-    testEndToEndImplementation(libs.junit.jupiter.api)
 }

@@ -1,7 +1,7 @@
 import com.autonomousapps.tasks.ProjectHealthTask
 
 plugins {
-    id("org.gradle.java")
+    id("org.gradle.java-base")
     id("com.autonomousapps.dependency-analysis")
     id("io.fuchs.gradle.classpath-collision-detector")
     id("org.example.gradle.base.lifecycle")
