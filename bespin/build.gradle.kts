@@ -3,6 +3,7 @@ plugins { id("org.example.gradle.component.library") }
 // For isolated-projects, use 'requireCapability' notation instead of testFixtures(...)
 dependencies {
     api(projects.corellia)
+    api(libs.kotlin.stdlib)
     implementation(projects.coruscant)
     implementation(libs.velocity.engine.core)
 
