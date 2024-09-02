@@ -1,4 +1,7 @@
-plugins { id("org.gradle.java") }
+plugins {
+    id("org.gradle.java")
+    id("org.example.gradle.base.lifecycle")
+}
 
 tasks.withType<Javadoc>().configureEach {
     options {

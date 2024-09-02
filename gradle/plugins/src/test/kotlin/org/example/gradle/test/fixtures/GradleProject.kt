@@ -26,7 +26,6 @@ class GradleProject {
     fun withMinimalStructure(): GradleProject {
         gradlePropertiesFile.writeText("""
             org.gradle.configuration-cache=true
-            dependency.analysis.autoapply=false
             # org.gradle.unsafe.isolated-projects=true
             org.gradle.caching=true
             kotlin.stdlib.default.dependency=false
@@ -41,7 +40,7 @@ class GradleProject {
         """.trimIndent())
         rootBuildFile.writeText("""
             plugins {
-                id("org.example.gradle.check.dependencies.root")
+                id("com.autonomousapps.dependency-analysis")
             }
         """.trimIndent())
         versions.writeText("""plugins {
