@@ -141,7 +141,6 @@ Check plugins are not necessarily needed to build a working software.
 - [org.example.gradle.check.dependencies.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.check.dependencies.gradle.kts)
   - [Video: Dependency Analysis](https://www.youtube.com/watch?v=Lipf5piizZc&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
   - [Video: Detect and Resolve Collisions on a Classpath](https://www.youtube.com/watch?v=KocTqF0hO_8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-- [org.example.gradle.check.dependencies.root.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.check.dependencies.root.gradle.kts)
 - [org.example.gradle.check.format-gradle.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.check.format-gradle.gradle.kts)
 - [org.example.gradle.check.format-gradle.root.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.check.format-gradle.root.gradle.kts)
 - [org.example.gradle.check.format-java.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.check.format-java.gradle.kts)

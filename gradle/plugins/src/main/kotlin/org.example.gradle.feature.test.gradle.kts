@@ -3,21 +3,31 @@ plugins {
     id("org.gradle.java")
 }
 
-// Configure details for *all* test executions directly on 'Test' task
-tasks.test {
-    group = "build"
+testing.suites.named<JvmTestSuite>("test") {
+    targets.all {
+        useJUnitJupiter() // Use JUnit 5 as test framework
+        // Configure details for test executions directly on 'Test' task
+        testTask {
+            group = "build"
 
-    useJUnitPlatform() // Use JUnit 5 as test framework
-    maxParallelForks = 4
+            maxParallelForks = 4
 
-    testLogging.showStandardStreams = true
+            testLogging.showStandardStreams = true
 
-    maxHeapSize = "1g"
-    systemProperty("file.encoding", "UTF-8")
+            maxHeapSize = "1g"
+            systemProperty("file.encoding", "UTF-8")
+        }
+    }
 }
 
-// Configure common test runtime dependencies for *all* projects
-dependencies {
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testRuntimeOnly("org.slf4j:slf4j-simple")
+testing.suites.withType<JvmTestSuite> {
+    // remove automatically added compile time dependencies, as we define them explicitly
+    configurations.getByName(sources.implementationConfigurationName) {
+        withDependencies { removeIf { it.group == "org.junit.jupiter" && it.name == "junit-jupiter" } }
+    }
+    // Configure common test runtime dependencies for *all* projects
+    dependencies {
+        runtimeOnly("org.junit.jupiter:junit-jupiter-engine")
+        runtimeOnly("org.slf4j:slf4j-simple")
+    }
 }
