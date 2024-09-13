@@ -4,21 +4,14 @@ plugins {
 }
 
 dependencies {
-    api(libs.guava)
     api(libs.jackson.annotations)
-    api(libs.jackson.databind)
-    api(libs.jakarta.inject.api)
     api(libs.kotlin.stdlib)
-    api(libs.opensaml)
-    api(libs.org.json)
-    implementation(libs.httpcomponents.fluent.hc)
-    implementation(libs.jackson.core)
-    implementation(libs.jackson.datatype.json.org)
-    implementation(libs.jackson.datatype.jsr310)
-    implementation(libs.jakarta.activation)
-    implementation(libs.jakarta.mail.impl)
-    implementation(libs.org.reflections)
     implementation(libs.slf4j.api)
+    runtimeOnly(libs.jackson.core)
+    runtimeOnly(libs.jackson.databind)
+    runtimeOnly(libs.jackson.datatype.json.org)
+    runtimeOnly(libs.jackson.datatype.jsr310)
+    runtimeOnly(libs.jakarta.mail.impl)
 
     testImplementation(libs.assertj.core)
     testImplementation(libs.junit.jupiter.api)

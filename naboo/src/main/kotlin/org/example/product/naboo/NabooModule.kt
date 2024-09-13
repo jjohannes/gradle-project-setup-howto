@@ -6,11 +6,10 @@ import org.apache.solr.common.params.MapSolrParams
 import org.apache.solr.common.params.SolrParams
 
 class NabooModule {
-    constructor() {
+
+    init {
         dive()
     }
-
-    constructor(importantNumber: Int) {}
 
     private fun dive(): Int {
         val params: SolrParams = MapSolrParams(Collections.singletonMap("a1", ""))

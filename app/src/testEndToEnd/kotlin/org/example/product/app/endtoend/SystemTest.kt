@@ -10,10 +10,12 @@ import org.junit.jupiter.api.Test
 class SystemTest {
     @Test
     fun testAll() {
-        Assertions.assertEquals(0, sendStuff(MockServer().get()))
+        val staticResult = MockServer.get()
+        val functionResultFromStaticMethod = MockServer().get()
+        Assertions.assertEquals(staticResult, sendStuff(functionResultFromStaticMethod))
     }
 
-    private fun sendStuff(things: ImmutableList<String>): Int {
-        return 0
+    fun sendStuff(things: ImmutableList<String>): ImmutableList<String> {
+        return things
     }
 }
