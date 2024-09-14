@@ -6,6 +6,12 @@ import org.example.product.app.MainModule
 class MockServer {
     fun get(): ImmutableList<String> {
         MainModule()
-        return ImmutableList.of("a", "b", "x", "y")
+        return MockServer.get()
+    }
+
+    companion object {
+        fun get(): ImmutableList<String> {
+            return ImmutableList.of("a", "b", "x", "y")
+        }
     }
 }

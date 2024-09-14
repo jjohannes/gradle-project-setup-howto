@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory
 @SessionScoped
 class MainModule {
 
-    fun run() {
-        LOGGER.info("Running application...")
+    fun run(args: List<String>) {
+        LOGGER.info("Running application with args: ${args.joinToString(separator = ",")} ...")
 
         BespinModule().doThings()
         KaminoModule()
