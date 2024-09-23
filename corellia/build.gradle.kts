@@ -4,6 +4,7 @@ plugins {
 }
 
 dependencies {
+    api(libs.kotlin.stdlib)
     api(libs.poi)
     implementation(libs.commons.io)
     implementation(libs.poi.ooxml)
