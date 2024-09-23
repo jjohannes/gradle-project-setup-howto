@@ -17,6 +17,7 @@ poi = "5.2.2"
 resteasy = "4.7.6.Final"
 slf4j = "1.7.36"
 solrj = "7.7.3"
+spring-boot = "2.7.18"
 typesafeconfig = "0.1.0"
 velocity = "2.3"
 zookeeper = "3.8.0"
@@ -50,6 +51,12 @@ resteasy-jackson2-provider = { module = "org.jboss.resteasy:resteasy-jackson2-pr
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
 solr-solrj = { module = "org.apache.solr:solr-solrj", version.ref = "solrj" }
+spring-boot = { module = "org.springframework.boot:spring-boot" }
+spring-boot-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure" }
+spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-context = { module = "org.springframework:spring-context" }
+spring-web = { module = "org.springframework:spring-web" }
 typesafeconfig-guice = { module = "com.github.racc:typesafeconfig-guice", version.ref = "typesafeconfig" }
 velocity-engine-core = { module = "org.apache.velocity:velocity-engine-core", version.ref = "velocity" }
 zookeeper = { module = "org.apache.zookeeper:zookeeper", version.ref = "zookeeper" }
