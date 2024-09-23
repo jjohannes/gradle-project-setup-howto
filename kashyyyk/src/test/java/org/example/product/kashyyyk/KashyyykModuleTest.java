@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 
 public class KashyyykModuleTest {
 
+    public KashyyykModuleTest() {}
+
     @Test
     void testModule() throws IOException {
         KashyyykModule module = new KashyyykModule();
