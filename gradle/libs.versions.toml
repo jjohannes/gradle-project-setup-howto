@@ -1,5 +1,9 @@
 [versions]
+android-material = "1.12.0"
+androidx-appcompat = "1.7.0"
+androidx-test = "1.1.5"
 assertj = "3.22.0"
+espresso = "3.5.1"
 guava = "30.1-jre"
 guice = "5.1.0"
 httpcomponents = "4.5.13"
@@ -22,6 +26,11 @@ velocity = "2.3"
 zookeeper = "3.8.0"
 
 [libraries]
+android-material = { module = "com.google.android.material:material", version.ref = "android-material" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso"}
+androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test" }
+androidx-test-monitor = { module = "androidx.test:monitor" }
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 commons-io = { module = "commons-io:commons-io" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
@@ -39,6 +48,7 @@ jakarta-mail-impl = { module = "com.sun.mail:jakarta.mail", version.ref = "jakar
 jakarta-servlet-api = { module = "jakarta.servlet:jakarta.servlet-api", version.ref = "jakarta-servlet" }
 jsr305 = { module = "com.google.code.findbugs:jsr305", version.ref = "jsr305" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit5" }
+junit4 = { module = "junit:junit" }
 opensaml = { module = "org.opensaml:opensaml", version.ref = "opensaml" }
 org-json = { module = "org.json:json", version.ref = "org-json" }
 org-reflections = { module = "org.reflections:reflections", version.ref = "org-reflections" }
