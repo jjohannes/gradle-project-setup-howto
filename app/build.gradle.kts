@@ -19,6 +19,7 @@ dependencies {
     mockApiImplementation(libs.guava)
 
     testImplementation(libs.junit.jupiter.api)
+
     testEndToEndImplementation(projects.app) { capabilities { requireFeature("mock-api") } }
     testEndToEndImplementation(libs.guava)
     testEndToEndImplementation(libs.junit.jupiter.api)
