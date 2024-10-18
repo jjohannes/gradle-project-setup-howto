@@ -8,6 +8,7 @@ dependencies {
     api(libs.jackson.annotations)
     api(libs.jackson.databind)
     api(libs.jakarta.inject.api)
+    api(libs.kotlin.stdlib)
     api(libs.opensaml)
     api(libs.org.json)
     implementation(libs.httpcomponents.fluent.hc)

@@ -2,6 +2,7 @@ plugins { id("org.example.gradle.component.library") }
 
 dependencies {
     api(projects.corellia)
+    api(libs.kotlin.stdlib)
     implementation(projects.coruscant)
     implementation(libs.velocity.engine.core)
 
