@@ -2,7 +2,6 @@ plugins { id("org.example.gradle.component.application") }
 
 application { mainClass = "org.example.product.app.Application" }
 
-// Complicated notation for 'capabilities' - upvote: https://github.com/gradle/gradle/issues/25629
 dependencies {
     implementation(projects.bespin)
     implementation(projects.corellia)
@@ -20,8 +19,7 @@ dependencies {
     mockApiImplementation(libs.guava)
 
     testImplementation(libs.junit.jupiter.api)
-
-    testEndToEndImplementation(projects.app) { capabilities { requireCapability("${project.group}:$name-mock-api") } }
+    testEndToEndImplementation(projects.app) { capabilities { requireFeature("mock-api") } }
     testEndToEndImplementation(libs.guava)
     testEndToEndImplementation(libs.junit.jupiter.api)
 }
