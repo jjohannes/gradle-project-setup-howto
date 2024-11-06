@@ -5,6 +5,10 @@ plugins {
     id("org.example.gradle.check.format-gradle")
 }
 
+javaPlatform.allowDependencies()
+
+dependencies { api(platform(libs.spring.boot.dependencies)) }
+
 // Reject versions that should not be upgraded beyond a certain point.
 // This makes Dependabot PR builds fail that attempt to update these.
 dependencies.constraints {
