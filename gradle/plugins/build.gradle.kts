@@ -10,6 +10,7 @@ dependencies {
     implementation("org.cyclonedx:cyclonedx-gradle-plugin:1.10.0")
     implementation("org.gradlex:jvm-dependency-conflict-resolution:2.1.2")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.20")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.7.18")
 }
 
 testing.suites.named<JvmTestSuite>("test") {

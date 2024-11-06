@@ -1,19 +1,26 @@
 package org.example.product.app
 
-import javax.servlet.annotation.WebServlet
-import javax.servlet.http.HttpServlet
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.util.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RestController
 
-@WebServlet("/check")
-class AppServlet : HttpServlet() {
+@RestController
+class AppServlet {
 
-    public override fun doGet(req: HttpServletRequest, res: HttpServletResponse) {
-        res.contentType = "text/html"
-        val pw = res.writer
-        pw.println("<html><body>")
-        pw.println("App is running...")
-        pw.println("</body></html>")
-        pw.close()
+    @GetMapping("/")
+    fun index(): String {
+        MainModule().run()
+        val version =
+            BufferedReader(
+                    InputStreamReader(
+                        Objects.requireNonNull(
+                            AppServlet::class.java.getResourceAsStream("/version.txt")
+                        )
+                    )
+                )
+                .readLine()
+        return "<html><body>App is running... !!!!<br/>Version $version</body></html>"
     }
 }
