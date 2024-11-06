@@ -8,6 +8,8 @@ import org.example.product.coruscant.CoruscantModule;
 
 public class BespinModule {
 
+    public BespinModule() {}
+
     public CorelliaModule doThings() throws IOException {
         new CoruscantModule();
         new VelocityWriter(new FileWriter(System.getProperty("java.io.tmpdir") + "/dummy.out"));

@@ -9,6 +9,9 @@ import javax.annotation.Nullable;
 import org.example.product.corellia.CorelliaModule;
 
 public class CorelliaModuleFixture implements ByteProcessor<CorelliaModuleFixture> {
+
+    public CorelliaModuleFixture() {}
+
     public List<CorelliaModule> threeModules() {
         new CorelliaModule();
         return ImmutableList.of(new CorelliaModule(), new CorelliaModule(), new CorelliaModule());
