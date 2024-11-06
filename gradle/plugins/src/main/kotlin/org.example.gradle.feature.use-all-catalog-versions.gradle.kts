@@ -7,7 +7,7 @@ dependencies.constraints {
     catalogEntries.forEach { entry ->
         val version = entry.version
         if (version != null) {
-            api(entry) { version { strictly(version) } }
+            api(entry) { version { require(version) } }
         }
     }
 }
