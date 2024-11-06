@@ -11,16 +11,17 @@ dependencies {
     implementation(projects.tatooine)
     implementation(libs.guice)
     implementation(libs.guice.servlet)
+    implementation(libs.kotlin.stdlib)
     implementation(libs.slf4j.api)
     runtimeOnly(libs.slf4j.simple)
     providedCompile(libs.jakarta.servlet.api)
 
+    mockApiApi(libs.guava)
     mockApiImplementation(projects.app)
-    mockApiImplementation(libs.guava)
 
     testImplementation(libs.junit.jupiter.api)
 
+    testEndToEndApi(libs.junit.jupiter.api)
     testEndToEndImplementation(projects.app) { capabilities { requireFeature("mock-api") } }
     testEndToEndImplementation(libs.guava)
-    testEndToEndImplementation(libs.junit.jupiter.api)
 }
