@@ -2,7 +2,7 @@
 assertj = "3.22.0"
 guava = "30.1-jre"
 guice = "5.1.0"
-httpcomponents = "4.5.13"
+httpcomponents = "4.5.14"
 jackson = "2.13.5"
 jakarta-activation = "1.2.2"
 jakarta-inject = "1.0.5"
