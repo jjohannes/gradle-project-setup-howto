@@ -19,7 +19,7 @@ slf4j = "1.7.36"
 solrj = "7.7.3"
 typesafeconfig = "0.1.0"
 velocity = "2.4.1"
-zookeeper = "3.8.0"
+zookeeper = "3.9.3"
 
 [libraries]
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
