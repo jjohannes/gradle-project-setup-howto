@@ -31,12 +31,12 @@ jobs:
         with:
           name: reports
           path: gradle/aggregation/build/reports
-      - uses: DependencyTrack/gh-upload-sbom@v3
-        if: ${{ !contains(github.ref_name, '/') }}
-        with:
-          apiKey: ${{ secrets.DEPENDENCYTRACK_APIKEY }}
-          bomFilename: "gradle/aggregation/build/reports/sbom/bom.xml"
-          serverHostname: ${{ secrets.DEPENDENCYTRACK_URL }}
-          projectName: "gradle-project-setup-howto"
-          projectVersion: ${{ github.ref_name }}
-          autoCreate: true
+#      - uses: DependencyTrack/gh-upload-sbom@v3
+#        if: ${{ !contains(github.ref_name, '/') }}
+#        with:
+#          apiKey: ${{ secrets.DEPENDENCYTRACK_APIKEY }}
+#          bomFilename: "gradle/aggregation/build/reports/sbom/bom.xml"
+#          serverHostname: ${{ secrets.DEPENDENCYTRACK_URL }}
+#          projectName: "gradle-project-setup-howto"
+#          projectVersion: ${{ github.ref_name }}
+#          autoCreate: true
