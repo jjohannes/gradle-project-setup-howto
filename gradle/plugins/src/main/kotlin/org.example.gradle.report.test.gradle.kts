@@ -8,7 +8,7 @@ plugins {
 // Make aggregation "classpath" use the platform for versions (gradle/versions)
 configurations.aggregateTestReportResults { extendsFrom(configurations["internal"]) }
 
-// Integrate FUNCTIONAL_TEST results into the aggregated UNIT_TEST test results
+// Integrate testEndToEnd results into the aggregated UNIT_TEST test results
 tasks.testAggregateTestReport {
     destinationDirectory = layout.buildDirectory.dir("reports/tests")
     testResults.from(
@@ -19,8 +19,7 @@ tasks.testAggregateTestReport {
                 withVariantReselection()
                 attributes {
                     attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category.VERIFICATION))
-                    attribute(TestSuiteType.TEST_SUITE_TYPE_ATTRIBUTE, objects.named(TestSuiteType.FUNCTIONAL_TEST))
-                    attribute(TestSuiteTargetName.TEST_SUITE_TARGET_NAME_ATTRIBUTE, objects.named("testEndToEnd"))
+                    attribute(TestSuiteName.TEST_SUITE_NAME_ATTRIBUTE, objects.named("testEndToEnd"))
                     attribute(
                         VerificationType.VERIFICATION_TYPE_ATTRIBUTE,
                         objects.named(VerificationType.TEST_RESULTS)

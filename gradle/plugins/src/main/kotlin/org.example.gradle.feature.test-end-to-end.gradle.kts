@@ -9,7 +9,6 @@ tasks.named("mockApiJar") { group = null }
 
 // end-to-end tests
 testing.suites.create<JvmTestSuite>("testEndToEnd") {
-    testType = TestSuiteType.FUNCTIONAL_TEST
     targets.named("testEndToEnd") {
         testTask {
             group = "build"

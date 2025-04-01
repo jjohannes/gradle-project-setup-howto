@@ -8,7 +8,7 @@ plugins {
 // Make aggregation "classpath" use the platform for versions (gradle/versions)
 configurations.aggregateCodeCoverageReportResults { extendsFrom(configurations["internal"]) }
 
-// Integrate FUNCTIONAL_TEST results into the aggregated UNIT_TEST coverage results
+// Integrate testEndToEnd results into the aggregated UNIT_TEST coverage results
 tasks.testCodeCoverageReport {
     reports.html.outputLocation = layout.buildDirectory.dir("reports/coverage")
     reports.xml.outputLocation = layout.buildDirectory.file("reports/coverage.xml")
@@ -20,8 +20,7 @@ tasks.testCodeCoverageReport {
                 withVariantReselection()
                 attributes {
                     attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category.VERIFICATION))
-                    attribute(TestSuiteType.TEST_SUITE_TYPE_ATTRIBUTE, objects.named(TestSuiteType.FUNCTIONAL_TEST))
-                    attribute(TestSuiteTargetName.TEST_SUITE_TARGET_NAME_ATTRIBUTE, objects.named("testEndToEnd"))
+                    attribute(TestSuiteName.TEST_SUITE_NAME_ATTRIBUTE, objects.named("testEndToEnd"))
                     attribute(
                         VerificationType.VERIFICATION_TYPE_ATTRIBUTE,
                         objects.named(VerificationType.JACOCO_RESULTS)
