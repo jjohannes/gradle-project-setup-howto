@@ -41,12 +41,3 @@ tasks.withType<AbstractArchiveTask>().configureEach {
 tasks.named("qualityCheck") { dependsOn(tasks.withType<JavaCompile>()) }
 
 tasks.named("qualityGate") { dependsOn(tasks.withType<JavaCompile>()) }
-
-// Clear tasks group 'build' from clutter for a clean set of tasks to be used in daily work
-tasks.buildDependents { setGroup(null) }
-
-tasks.buildNeeded { setGroup(null) }
-
-tasks.jar { setGroup(null) }
-
-sourceSets.all { tasks.named(classesTaskName) { group = null } }

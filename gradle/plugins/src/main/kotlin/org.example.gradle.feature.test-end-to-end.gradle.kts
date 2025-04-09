@@ -5,8 +5,6 @@ val mockApi = sourceSets.create("mockApi")
 
 java.registerFeature(mockApi.name) { usingSourceSet(mockApi) }
 
-tasks.named("mockApiJar") { group = null }
-
 // end-to-end tests
 testing.suites.create<JvmTestSuite>("testEndToEnd") {
     targets.named("testEndToEnd") {

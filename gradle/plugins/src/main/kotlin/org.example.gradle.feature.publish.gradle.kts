@@ -9,10 +9,6 @@ java {
     withJavadocJar()
 }
 
-tasks.named("sourcesJar") { group = null }
-
-tasks.named("javadocJar") { group = null }
-
 publishing.publications.create<MavenPublication>("mavenJava") {
     from(components["java"])
 

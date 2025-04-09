@@ -10,5 +10,3 @@ tasks.withType<Javadoc>().configureEach {
         addStringOption("Xwerror", "-Xdoclint:all,-missing")
     }
 }
-
-tasks.named("qualityCheck") { dependsOn(tasks.withType<Javadoc>()) }

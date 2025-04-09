@@ -3,8 +3,6 @@ plugins {
     id("org.example.gradle.base.dependency-rules")
 }
 
-tasks.war { setGroup(null) }
-
 // The war plugin used 'providedRuntime' / 'providedCompile' to resolve dependencies for packaging
 // the WAR file
 configurations.providedCompile { shouldResolveConsistentlyWith(configurations["mainRuntimeClasspath"]) }
