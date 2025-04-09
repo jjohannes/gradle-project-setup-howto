@@ -4,12 +4,12 @@ plugins {
 }
 
 dependencies {
-    api(libs.poi)
-    implementation(libs.commons.io)
-    implementation(libs.poi.ooxml)
+    api("org.apache.poi:poi")
+    implementation("commons-io:commons-io")
+    implementation("org.apache.poi:poi-ooxml")
 
-    testImplementation(libs.junit.jupiter.api)
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
 
-    testFixturesApi(libs.guava)
-    testFixturesApi(libs.jsr305)
+    testFixturesApi("com.google.code.findbugs:jsr305")
+    testFixturesApi("com.google.guava:guava")
 }

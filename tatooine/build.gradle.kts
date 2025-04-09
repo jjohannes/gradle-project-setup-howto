@@ -1,8 +1,8 @@
 plugins { id("org.example.gradle.component.library") }
 
 dependencies {
-    api(libs.typesafeconfig.guice)
-    implementation(libs.zookeeper)
+    api("com.github.racc:typesafeconfig-guice")
+    implementation("org.apache.zookeeper:zookeeper")
 
-    testImplementation(libs.junit.jupiter.api)
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
 }
