@@ -1,5 +1,9 @@
 name: Build Project
-on: [ push ]
+on:
+  push:
+    branches-ignore: [ dependabot/** ]
+  pull_request_target:
+    branches: [ main ]
 env:
   BUILD_CACHE_USER: ${{ secrets.BUILD_CACHE_USER }}
   BUILD_CACHE_PWD: ${{ secrets.BUILD_CACHE_PWD }}
