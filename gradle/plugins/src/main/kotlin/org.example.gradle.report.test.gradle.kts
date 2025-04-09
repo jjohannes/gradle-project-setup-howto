@@ -22,7 +22,7 @@ tasks.testAggregateTestReport {
                     attribute(TestSuiteName.TEST_SUITE_NAME_ATTRIBUTE, objects.named("testEndToEnd"))
                     attribute(
                         VerificationType.VERIFICATION_TYPE_ATTRIBUTE,
-                        objects.named(VerificationType.TEST_RESULTS)
+                        objects.named(VerificationType.TEST_RESULTS),
                     )
                 }
             }

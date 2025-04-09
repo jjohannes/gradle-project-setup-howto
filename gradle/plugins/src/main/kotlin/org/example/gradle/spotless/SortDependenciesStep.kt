@@ -10,7 +10,7 @@ class SortDependenciesStep : java.io.Serializable {
             return FormatterStep.create(
                 "SortDependenciesStep",
                 SortDependenciesStep(),
-                SortDependenciesStep::toFormatter
+                SortDependenciesStep::toFormatter,
             )
         }
     }
@@ -83,13 +83,13 @@ class SortDependenciesStep : java.io.Serializable {
         RuntimeOnly,
         ProvidedCompile,
         ProvidedRuntime,
-        AnnotationProcessor
+        AnnotationProcessor,
     }
 
     private data class DependencyDeclaration(
         val sourceSet: String,
         val scope: Scope,
         val isProject: Boolean,
-        val line: String
+        val line: String,
     )
 }

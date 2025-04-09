@@ -32,19 +32,19 @@ jvmDependencyConflicts {
             "org.apache.httpcomponents:fluent-hc",
             "org.apache.httpcomponents:httpclient-cache",
             "org.apache.httpcomponents:httpclient-win",
-            "org.apache.httpcomponents:httpclient-osgi"
+            "org.apache.httpcomponents:httpclient-osgi",
         )
         align(
             "org.apache.poi:poi",
             "org.apache.poi:poi-excelant",
             "org.apache.poi:poi-ooxml",
-            "org.apache.poi:poi-scratchpad"
+            "org.apache.poi:poi-scratchpad",
         )
         align("com.google.inject.extensions:guice-servlet", "com.google.inject:guice")
         align(
             "org.jboss.resteasy:resteasy-core",
             "org.jboss.resteasy:resteasy-guice",
-            "org.jboss.resteasy:resteasy-jackson2-provider"
+            "org.jboss.resteasy:resteasy-jackson2-provider",
         )
     }
 }

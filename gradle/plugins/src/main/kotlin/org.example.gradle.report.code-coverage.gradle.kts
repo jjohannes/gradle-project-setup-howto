@@ -23,7 +23,7 @@ tasks.testCodeCoverageReport {
                     attribute(TestSuiteName.TEST_SUITE_NAME_ATTRIBUTE, objects.named("testEndToEnd"))
                     attribute(
                         VerificationType.VERIFICATION_TYPE_ATTRIBUTE,
-                        objects.named(VerificationType.JACOCO_RESULTS)
+                        objects.named(VerificationType.JACOCO_RESULTS),
                     )
                     attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, ArtifactTypeDefinition.BINARY_DATA_TYPE)
                 }
