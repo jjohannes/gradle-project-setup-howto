@@ -6,7 +6,7 @@ plugins {
 spotless {
     kotlinGradle {
         ktfmt().kotlinlangStyle().configure { it.setMaxWidth(120) }
-        target("gradle/plugins/src/main/**/*.gradle.kts")
+        target("settings.gradle.kts", "gradle/plugins/build.gradle.kts", "gradle/plugins/src/main/**/*.gradle.kts")
     }
     kotlin {
         ktfmt().kotlinlangStyle().configure { it.setMaxWidth(120) }
