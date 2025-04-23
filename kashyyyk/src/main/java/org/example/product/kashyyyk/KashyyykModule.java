@@ -8,8 +8,10 @@ import org.example.product.bespin.BespinModule;
 import org.example.product.kamino.KaminoModule;
 import org.example.product.naboo.NabooModule;
 import org.example.product.tatooine.TatooineModule;
+import android.widget.Button;
 
 public class KashyyykModule {
+    public Button button;
 
     public KashyyykModule() {
         try (InputStream hello = KashyyykModule.class.getResourceAsStream("hello.txt")) {

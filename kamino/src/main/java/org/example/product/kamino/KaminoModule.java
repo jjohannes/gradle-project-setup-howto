@@ -4,6 +4,7 @@ import org.example.product.coruscant.CoruscantModuleData;
 import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener;
 import org.jboss.resteasy.plugins.providers.jackson.ResteasyJackson2Provider;
 import org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap;
+import android.widget.Button;
 
 /**
  * I am published and therefore I have Javadoc!
@@ -19,6 +20,12 @@ public class KaminoModule {
      * Data...
      */
     public CoruscantModuleData data;
+
+
+    /**
+     * Android stuff...
+     */
+    public Button button;
 
     /**
      * Info!
