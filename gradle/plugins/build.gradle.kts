@@ -1,8 +1,12 @@
 plugins { `kotlin-dsl` }
 
-repositories { gradlePluginPortal() }
+repositories {
+    gradlePluginPortal()
+    google()
+}
 
 dependencies {
+    implementation("com.android.tools.build:gradle:8.3.0")
     implementation("com.autonomousapps:dependency-analysis-gradle-plugin:2.15.0")
     implementation("com.diffplug.spotless:spotless-plugin-gradle:7.0.3")
     implementation("com.gradle:develocity-gradle-plugin:4.0")
