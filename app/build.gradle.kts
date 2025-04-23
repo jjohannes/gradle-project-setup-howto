@@ -1,7 +1,5 @@
 plugins { id("org.example.gradle.component.application") }
 
-application { mainClass = "org.example.product.app.Application" }
-
 dependencies {
     implementation(projects.bespin)
     implementation(projects.corellia)
@@ -13,8 +11,12 @@ dependencies {
     implementation(libs.guice.servlet)
     implementation(libs.kotlin.stdlib)
     implementation(libs.slf4j.api)
+    implementation(libs.spring.boot)
+    implementation(libs.spring.boot.autoconfigure)
+    implementation(libs.spring.context)
+    implementation(libs.spring.web)
     runtimeOnly(libs.slf4j.simple)
-    providedCompile(libs.jakarta.servlet.api)
+    runtimeOnly(libs.spring.boot.starter.web)
 
     mockApiApi(libs.guava)
     mockApiImplementation(projects.app)
