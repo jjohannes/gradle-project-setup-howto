@@ -176,9 +176,9 @@ The task generates a [PlantUML](https://plantuml.com) file that you can render, 
 
 - [build.yaml](.github/workflows/build.yaml) Configure GitHub to run builds and produce reports (👉[inspect](https://github.com/jjohannes/gradle-project-setup-howto/actions/workflows/build.yaml)). Integrates with:
   - [Develocity Build Scans](https://scans.gradle.com/) (👉[inspect](https://scans.gradle.com/s/h3odwhbjjd2qm))
-  - [Gradle Remote Build Cache](https://docs.gradle.com/build-cache-node/)
+  - [Gradle Remote Build Cache](https://docs.gradle.com/develocity/build-cache-node/)
   - [Reposilite](https://reposilite.com/) (👉[inspect](https://repo.onepiece.software/#/snapshots))
-  - [Dependency Track](https://dependencytrack.org/) (👉[inspect](https://dtrack.onepiece.software/) login: guest/guest)
+  - [Dependency Track](https://dependencytrack.org/)
 - [dependabot.yml](.github/dependabot.yml) Configure [Dependabot](https://github.com/dependabot) to automatically get version updates (👉[inspect](https://github.com/jjohannes/gradle-project-setup-howto/pulls/app%2Fdependabot))
 
 ## Notes
@@ -187,7 +187,7 @@ The task generates a [PlantUML](https://plantuml.com) file that you can render, 
 - The concrete things done in all places (custom tasks, components used in dependencies, additional plugins applied, etc.) are just examples.
   If you, for example, need to use additional Gradle plugins you can add these in the corresponding place, keeping the suggested structure.
 - There was a different version of this repository I initially published in 2022. The setup was more complex by splitting
-  the Gradle configuration over move folders which required more boilerplate. After using a setup like his in several
+  the Gradle configuration over more folders which required more boilerplate. After using a setup like this in several
   projects, I felt that the setup was overly complex without adding much value. I ended up striping it down to what this
   repository is now. The older version is still accessible on the
   [2022_java](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_java) branch.
