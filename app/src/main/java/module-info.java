@@ -9,5 +9,4 @@ module org.example.product.app {
     requires org.example.product.tatooine;
     requires jakarta.servlet;
     requires org.slf4j;
-    requires /*runtime*/ org.slf4j.simple;
 }
