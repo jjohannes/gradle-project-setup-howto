@@ -39,6 +39,8 @@ jakarta-mail-impl = { module = "com.sun.mail:jakarta.mail", version.ref = "jakar
 jakarta-servlet-api = { module = "jakarta.servlet:jakarta.servlet-api", version.ref = "jakarta-servlet" }
 jsr305 = { module = "com.google.code.findbugs:jsr305", version.ref = "jsr305" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit5" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test" }
 opensaml = { module = "org.opensaml:opensaml", version.ref = "opensaml" }
 org-json = { module = "org.json:json", version.ref = "org-json" }
 org-reflections = { module = "org.reflections:reflections", version.ref = "org-reflections" }
