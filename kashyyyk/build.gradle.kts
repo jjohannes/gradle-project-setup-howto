@@ -6,5 +6,5 @@ dependencies {
     implementation(projects.bespin)
     implementation(projects.kamino)
 
-    testImplementation(libs.junit.jupiter.api)
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
 }

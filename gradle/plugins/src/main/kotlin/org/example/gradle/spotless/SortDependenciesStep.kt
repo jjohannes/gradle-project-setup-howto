@@ -56,7 +56,7 @@ class SortDependenciesStep : java.io.Serializable {
         var scope = Scope.Api
         var sourceSet = ""
         val isProject = line.contains("(projects.")
-        val isThirdParty = line.contains("(libs.")
+        val isThirdParty = line.matches(Regex(".+\\([^:]+:[^:]+(:\\$.+)?\\).*"))
 
         if (!isProject && !isThirdParty) {
             println("WARN: Discouraged dependency notation: ${line.trim()}")
