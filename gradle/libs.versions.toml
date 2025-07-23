@@ -1,6 +1,6 @@
 [versions]
 assertj = "3.22.0"
-guava = "33.4.0-jre"
+guava = "33.4.8-jre"
 guice = "5.1.0"
 httpcomponents = "4.5.14"
 jackson = "2.13.5"
