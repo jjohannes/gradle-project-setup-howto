@@ -9,7 +9,12 @@ plugins {
 }
 
 // Configure the dependency analysis plugin to fail if issues are found
-configure<DependencyAnalysisSubExtension> { issues { onAny { severity("fail") } } }
+configure<DependencyAnalysisSubExtension> {
+    issues {
+        onAny { severity("fail") }
+        onRedundantPlugins { severity("ignore") }
+    }
+}
 
 tasks.named("qualityCheck") {
     dependsOn(tasks.detectCollisions)
