@@ -1,7 +1,7 @@
 name: Build Project
 on:
   push:
-    branches-ignore: [ dependabot/** ]
+    branches-ignore: [ renovate/** ]
   pull_request_target:
     branches: [ main ]
 env:
