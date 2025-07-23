@@ -8,8 +8,7 @@ dependencies {
     implementation("commons-io:commons-io")
     implementation("org.apache.poi:poi-ooxml")
 
+    testImplementation("com.google.code.findbugs:jsr305")
+    testImplementation("com.google.guava:guava")
     testImplementation("org.junit.jupiter:junit-jupiter-api")
-
-    testFixturesApi("com.google.code.findbugs:jsr305")
-    testFixturesApi("com.google.guava:guava")
 }
