@@ -14,6 +14,16 @@ jvmDependencyConflicts {
     logging { enforceSlf4JSimple() }
 
     patch {
+        // Avoid conflict between 'javax.activation' and 'jakarta.activation-api' in the
+        // detachedConfiguration that is input to AndroidLintTask.lintTool.classpath
+        // Because for 'detachedConfigurations' you cannot inject conflict resolution strategies
+        //   select(JAVAX_ACTIVATION_API, "jakarta.activation:jakarta.activation-api")
+        // would not solve the issue.
+        module("com.android.tools:repository") {
+            removeDependency("com.sun.activation:javax.activation")
+            addApiDependency("jakarta.activation:jakarta.activation-api")
+        }
+
         module("com.github.racc:typesafeconfig-guice") {
             // remove and re-add due to 'no_aop' classifier
             removeDependency("com.google.inject:guice")
