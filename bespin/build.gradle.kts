@@ -3,8 +3,8 @@ plugins { id("org.example.gradle.component.library") }
 dependencies {
     api(projects.corellia)
     implementation(projects.coruscant)
-    implementation(libs.velocity.engine.core)
+    implementation("org.apache.velocity:velocity-engine-core")
 
     testImplementation(testFixtures(projects.corellia))
-    testImplementation(libs.junit.jupiter.api)
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
 }

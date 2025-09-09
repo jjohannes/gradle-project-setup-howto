@@ -1,8 +1,8 @@
 plugins { id("org.example.gradle.component.library") }
 
 dependencies {
-    implementation(libs.solr.solrj)
-    implementation(libs.zookeeper.jute)
+    implementation("org.apache.solr:solr-solrj")
+    implementation("org.apache.zookeeper:zookeeper-jute")
 
-    testImplementation(libs.junit.jupiter.api)
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
 }
