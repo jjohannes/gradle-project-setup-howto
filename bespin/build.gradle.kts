@@ -5,6 +5,6 @@ dependencies {
     implementation(projects.coruscant)
     implementation("org.apache.velocity:velocity-engine-core")
 
-    testImplementation(testFixtures(projects.corellia))
+    testImplementation(projects.corellia) { capabilities { requireFeature("test") } }
     testImplementation("org.junit.jupiter:junit-jupiter-api")
 }
