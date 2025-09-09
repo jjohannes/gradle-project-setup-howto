@@ -11,36 +11,12 @@ env:
   PUBLISHING_REPOSITORY_USER: ${{ secrets.PUBLISHING_REPOSITORY_USER }}
   PUBLISHING_REPOSITORY_PWD: ${{ secrets.PUBLISHING_REPOSITORY_PWD }}
 jobs:
-  gradle-build:
+  maven-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version-file: gradle/jdk-version.txt
-      - uses: gradle/actions/setup-gradle@v3
-        with:
-          cache-read-only: false
-      - run: "./gradlew qualityCheck"
-      - run: "./gradlew test"
-      - run: "./gradlew testEndToEnd"
-      - run: "./gradlew testEndToEndSlow"
-      - run: "./gradlew check"
-      - run: "./gradlew cyclonedxBom --no-configuration-cache"
-#     - run: "./gradlew publish"
-        if: ${{ !contains(github.ref_name, '/') }}
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: reports
-          path: gradle/aggregation/build/reports
-#      - uses: DependencyTrack/gh-upload-sbom@v3
-#        if: ${{ !contains(github.ref_name, '/') }}
-#        with:
-#          apiKey: ${{ secrets.DEPENDENCYTRACK_APIKEY }}
-#          bomFilename: "gradle/aggregation/build/reports/sbom/bom.xml"
-#          serverHostname: ${{ secrets.DEPENDENCYTRACK_URL }}
-#          projectName: "gradle-project-setup-howto"
-#          projectVersion: ${{ github.ref_name }}
-#          autoCreate: true
+          java-version: 21
+      - run: "./mvnw -B -U -ntp clean verify"
