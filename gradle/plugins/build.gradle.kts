@@ -9,6 +9,7 @@ dependencies {
     implementation("io.fuchs.gradle.classpath-collision-detector:classpath-collision-detector:1.0.0")
     implementation("org.cyclonedx:cyclonedx-gradle-plugin:2.3.1")
     implementation("org.gradlex:jvm-dependency-conflict-resolution:2.4")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.0")
 }
 
 testing.suites.named<JvmTestSuite>("test") {
