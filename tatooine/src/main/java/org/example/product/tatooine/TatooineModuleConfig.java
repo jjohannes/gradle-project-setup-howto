@@ -1,11 +1,14 @@
 package org.example.product.tatooine;
 
-import com.github.racc.tscg.TypesafeConfig;
-
 public class TatooineModuleConfig {
 
-    private String val1;
-    private int val2;
+    private final String val1;
+    private final int val2;
+
+    public TatooineModuleConfig(String val1, int val2) {
+        this.val1 = val1;
+        this.val2 = val2;
+    }
 
     public String getVal1() {
         return val1;
@@ -15,8 +18,7 @@ public class TatooineModuleConfig {
         return val2;
     }
 
-    @TypesafeConfig(value = "module.cfg")
     public TatooineModuleConfig provide() {
-        return new TatooineModuleConfig();
+        return new TatooineModuleConfig("-", 64);
     }
 }

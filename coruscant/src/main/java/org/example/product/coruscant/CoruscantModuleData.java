@@ -6,4 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * I am data and I am published!
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CoruscantModuleData {}
+public class CoruscantModuleData {
+
+    public CoruscantModuleData() {}
+}
