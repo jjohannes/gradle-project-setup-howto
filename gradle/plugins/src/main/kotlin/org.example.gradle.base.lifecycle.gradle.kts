@@ -11,13 +11,13 @@ if (gradle.startParameter.taskNames.isEmpty()) {
 tasks.register("qualityCheck") {
     group = "verification"
     description = "Runs checks (without executing tests)"
-    dependsOn(tasks.assemble)
+    dependsOn(tasks.withType<SourceTask>())
 }
 
 tasks.register("qualityGate") {
     group = "build"
     description = "Runs checks and auto-corrects (without executing tests)"
-    dependsOn(tasks.assemble)
+    dependsOn(tasks.withType<SourceTask>())
 }
 
 tasks.check { dependsOn(tasks.named("qualityCheck")) }

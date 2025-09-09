@@ -44,3 +44,24 @@ jobs:
 #          projectName: "gradle-project-setup-howto"
 #          projectVersion: ${{ github.ref_name }}
 #          autoCreate: true
+
+  package:
+    needs: gradle-build
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, windows-2022, macos-13, macos-14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version-file: gradle/jdk-version.txt
+      - uses: gradle/actions/setup-gradle@v3
+        with:
+          cache-read-only: false
+      - run: "./gradlew assemble${{ matrix.os }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Application Package ${{ matrix.os }}
+          path: app/build/packages/*/*

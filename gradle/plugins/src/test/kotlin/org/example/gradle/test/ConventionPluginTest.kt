@@ -27,85 +27,40 @@ class ConventionPluginTest {
     }
 
     @Test
-    fun `qualityGate sorts dependencies of a library`() {
-        val p = GradleProject().withMinimalStructure()
-        p.catalog("""
-            [libraries]
-            resteasy-core = { module = "org.jboss.resteasy:resteasy-core", version = "4.7.6.Final" }
-            resteasy-jackson2-provider = { module = "org.jboss.resteasy:resteasy-jackson2-provider" }
-            guice = { module = "com.google.inject:guice", version = "5.1.0" }
-        """.trimIndent())
-        val buildFile = p.moduleBuildFile("""
-            plugins {
-                id("org.example.gradle.component.library")
-            }
-            
-            dependencies {
-                implementation(libs.resteasy.jackson2.provider)
-                api(libs.resteasy.core)
-                implementation(libs.guice)
-            }   
-        """.trimIndent())
-        p.file("module/src/main/java/foo/Bar.java", """
-            package foo;
-            public class Bar {
-                private org.jboss.resteasy.plugins.providers.jackson.ResteasyJackson2Provider a;
-                private com.google.inject.Guice b;
-                public org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap c;
-            }
-        """.trimIndent())
-
-        p.qualityGate()
-
-        assertThat(buildFile).hasContent("""
-            plugins { id("org.example.gradle.component.library") }
-            
-            dependencies {
-                api(libs.resteasy.core)
-                implementation(libs.guice)
-                implementation(libs.resteasy.jackson2.provider)
-            }
-        """.trimIndent())
-    }
-
-    @Test
     fun `qualityGate fails for wrong dependency scopes`() {
         val p = GradleProject().withMinimalStructure()
         p.catalog("""
             [libraries]
-            resteasy-core = { module = "org.jboss.resteasy:resteasy-core", version = "4.7.6.Final" }
-            resteasy-jackson2-provider = { module = "org.jboss.resteasy:resteasy-jackson2-provider" }
-            guice = { module = "com.google.inject:guice", version = "5.1.0" }
+            guava = { module = "com.google.guava:guava", version = "30.1-jre" }
+            jackson-core = { module = "com.fasterxml.jackson.core:jackson-databind", version = "2.13.5" }
         """.trimIndent())
         p.moduleBuildFile("""
             plugins {
                 id("org.example.gradle.component.library")
+            }  
+        """.trimIndent())
+        p.file("module/src/main/java/module-info.java", """
+            module foo.module {
+                requires com.google.common;
+                requires transitive com.fasterxml.jackson.databind;
             }
-            
-            dependencies {
-                implementation(libs.resteasy.jackson2.provider)
-                api(libs.resteasy.core)
-                implementation(libs.guice)
-            }   
         """.trimIndent())
         p.file("module/src/main/java/foo/Bar.java", """
             package foo;
             public class Bar {
-                private org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap c;
+                private com.fasterxml.jackson.databind.ObjectMapper om;
             }
         """.trimIndent())
 
         val result = p.failQualityGate()
 
         assertThat(result.output).contains("""
-            Unused dependencies which should be removed:
-              implementation(libs.guice)
-            
-            Existing dependencies which should be modified to be as indicated:
-              implementation(libs.resteasy.core) (was api)
-            
-            Dependencies which should be removed or changed to runtime-only:
-              runtimeOnly(libs.resteasy.jackson2.provider) (was implementation)
+          Please add the following requires directives:
+              requires com.fasterxml.jackson.databind;
+          
+          Please remove the following requires directives (or change to runtimeOnly):
+              requires com.google.common;
+              requires transitive com.fasterxml.jackson.databind;
         """.trimIndent())
     }
 

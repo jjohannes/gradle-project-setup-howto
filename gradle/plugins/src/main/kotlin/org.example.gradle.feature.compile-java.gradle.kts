@@ -24,7 +24,7 @@ tasks.withType<JavaCompile>().configureEach {
         encoding = "UTF-8"
         compilerArgs.add("-implicit:none")
         compilerArgs.add("-Werror")
-        compilerArgs.add("-Xlint:all,-serial")
+        compilerArgs.add("-Xlint:all,-serial,-exports")
     }
 }
 
