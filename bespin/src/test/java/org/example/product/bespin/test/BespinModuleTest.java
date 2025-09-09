@@ -2,7 +2,7 @@ package org.example.product.bespin.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.example.product.corellia.fixtures.CorelliaModuleFixture;
+import org.example.product.corellia.test.fixtures.CorelliaModuleFixture;
 import org.junit.jupiter.api.Test;
 
 public class BespinModuleTest {

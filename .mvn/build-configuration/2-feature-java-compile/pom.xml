@@ -1,0 +1,60 @@
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Link parents -->
+    <parent>
+        <relativePath>../1-base-versions</relativePath>
+        <groupId>org.example.product.java</groupId>
+        <artifactId>mavenbuild-base-versions</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <packaging>pom</packaging>
+    <artifactId>mavenbuild-feature-java-compile</artifactId>
+
+    <!-- Configuration -->
+    <properties>
+        <maven.compiler.release>21</maven.compiler.release>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.3.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.14.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.4.2</version>
+                    <configuration>
+                        <archive>
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                            <manifest>
+                                <addDefaultEntries>false</addDefaultEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.4.0</version>
+                    <configuration>
+                        <archive>
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                            <manifest>
+                                <addDefaultEntries>false</addDefaultEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

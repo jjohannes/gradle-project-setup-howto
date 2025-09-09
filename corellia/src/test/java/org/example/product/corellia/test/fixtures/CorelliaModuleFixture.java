@@ -1,12 +1,13 @@
-package org.example.product.corellia.fixtures;
+package org.example.product.corellia.test.fixtures;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.ByteProcessor;
-import java.io.IOException;
-import java.util.List;
+import org.example.product.corellia.CorelliaModule;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import org.example.product.corellia.CorelliaModule;
+import java.io.IOException;
+import java.util.List;
 
 public class CorelliaModuleFixture implements ByteProcessor<CorelliaModuleFixture> {
 

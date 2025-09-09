@@ -1,0 +1,38 @@
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <relativePath>.mvn/build-configuration/0-base-identity</relativePath>
+        <groupId>org.example.product.java</groupId>
+        <artifactId>mavenbuild-base-identity</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>gradle-project-setup-howto</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>app</module>
+        <module>bespin</module>
+        <module>corellia</module>
+        <module>coruscant</module>
+        <module>kamino</module>
+        <module>kashyyyk</module>
+        <module>naboo</module>
+        <module>tatooine</module>
+    </modules>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.gradlex</groupId>
+                <artifactId>java-module-dependencies-maven-extension</artifactId>
+                <version>0.1</version>
+            </extension>
+        </extensions>
+    </build>
+</project>
