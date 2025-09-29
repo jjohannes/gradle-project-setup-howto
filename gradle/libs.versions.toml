@@ -3,7 +3,8 @@ assertj = "3.27.3"
 guava = "33.4.8-jre"
 guice = "5.1.0"
 httpcomponents = "4.5.14"
-jackson = "2.20"
+jackson = "2.13.5"
+jackson-annotations = "2.13.5"
 jakarta-activation = "1.2.2"
 jakarta-inject = "1.0.5"
 jakarta-mail = "1.6.8"
@@ -28,7 +29,7 @@ guava = { module = "com.google.guava:guava", version.ref = "guava" }
 guice = { module = "com.google.inject:guice", version.ref = "guice" }
 guice-servlet = { module = "com.google.inject.extensions:guice-servlet" }
 httpcomponents-fluent-hc = { module = "org.apache.httpcomponents:fluent-hc", version.ref = "httpcomponents" }
-jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
+jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson-annotations" }
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind" }
 jackson-datatype-json-org = { module = "com.fasterxml.jackson.datatype:jackson-datatype-json-org" }
