@@ -1,4 +1,6 @@
 .gradle
 .idea
+.vscode
 build
 target
+bin
