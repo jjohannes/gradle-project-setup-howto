@@ -2,7 +2,6 @@ plugins {
     id("org.example.gradle.base.dependency-rules")
     id("org.example.gradle.base.lifecycle")
     id("org.example.gradle.feature.use-all-catalog-versions")
-    id("org.example.gradle.check.format-gradle")
 }
 
 // Reject versions that should not be upgraded beyond a certain point.
