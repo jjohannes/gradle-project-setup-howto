@@ -1,7 +1,7 @@
 plugins {
     id("org.example.gradle.base.dependency-rules")
-    id("org.example.gradle.base.lifecycle")
     id("org.example.gradle.feature.use-all-catalog-versions")
+    id("org.example.gradle.check.dependency-versions")
     id("org.example.gradle.check.format-gradle")
 }
 
@@ -15,4 +15,10 @@ dependencies.constraints {
     api(libs.org.reflections) { version { reject("[0.9.12,)") } } // Upgrade breaks 'com.github.racc:typesafeconfig-guice'
     api(libs.resteasy.core) { version { reject("[5.0.0.Final,)") } }
     api(libs.solr.solrj) { version { reject("[8.0.0,)") } } // API changes in 8 require production code changes
+}
+
+tasks.checkVersionConsistency {
+    excludes.add("org.junit.jupiter:junit-jupiter-api") // testing only
+    excludes.add("org.assertj:assertj-core") // testing only
+    excludes.add("com.google.code.findbugs:jsr305") // test fixtures only
 }

@@ -1,4 +1,7 @@
-plugins { id("org.gradle.java-platform") }
+plugins {
+    id("org.gradle.java-platform")
+    id("org.example.gradle.base.lifecycle")
+}
 
 // Allow upgrading (transitive) versions via catalog by adding constraints
 dependencies.constraints {
