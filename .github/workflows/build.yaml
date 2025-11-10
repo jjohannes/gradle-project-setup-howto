@@ -16,7 +16,7 @@ jobs:
         with:
           distribution: temurin
           java-version-file: gradle/jdk-version.txt
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v5
         with:
           cache-read-only: false
       - run: "./gradlew qualityCheck"
