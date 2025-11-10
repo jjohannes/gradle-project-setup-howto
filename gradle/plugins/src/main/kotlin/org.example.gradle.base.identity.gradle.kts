@@ -5,16 +5,21 @@ plugins { id("org.gradle.base") }
 group = "org.example"
 
 // Set the version from 'version.txt'
+@Suppress("UnstableApiUsage")
 version = providers.fileContents(isolated.rootProject.projectDirectory.file("gradle/version.txt")).asText.getOrElse("")
 
 // On CI, add timestamp for publishing
 if (providers.environmentVariable("CI").getOrElse("false").toBoolean()) {
     val gitCommitTimestamp =
         providers
-            .exec { commandLine("git", "log", "-1", "--format=%ad", "--date=format:%Y%m%d%H%M%S") }
+            .exec {
+                commandLine("git", "log", "-1", "--format=%ad", "--date=format:%Y%m%d%H%M%S")
+                isIgnoreExitValue = true
+            }
             .standardOutput
             .asText
             .get()
             .trim()
-    version = "$version-$gitCommitTimestamp"
+            .let { if (it.isNotEmpty()) "-$it" else it }
+    version = "$version$gitCommitTimestamp"
 }
