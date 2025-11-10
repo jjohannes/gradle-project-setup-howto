@@ -109,7 +109,6 @@ Each _feature_ plugin configures one aspect of building the software – like _c
   - [Video: Feature Variants](https://www.youtube.com/watch?v=XCzyUESaBHQ&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
 - [org.example.gradle.feature.test-fixtures.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.test-fixtures.gradle.kts)
   - [Video: Test Fixtures](https://www.youtube.com/watch?v=fSRN6YKa5B0&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
-- [org.example.gradle.feature.war.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.war.gradle.kts)
 - [org.example.gradle.feature.checksum.gradle.kts](gradle/plugins/src/main/kotlin/org.example.gradle.feature.checksum.gradle.kts)
   - [Video: Configuring Task Inputs and Outputs](https://www.youtube.com/watch?v=Pj9hSRauiQM&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
   - [Video: Implementing Tasks and Extensions](https://www.youtube.com/watch?v=wrgyUKC7vOY&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
