@@ -1,12 +1,18 @@
 plugins { id("org.gradle.java") }
 
-// Specific API fixtures used for testing without live service
-val mockApi = sourceSets.create("mockApi")
-
-java.registerFeature(mockApi.name) { usingSourceSet(mockApi) }
-
 // end-to-end tests
-testing.suites.create<JvmTestSuite>("testEndToEnd") {
+@Suppress("UnstableApiUsage")
+testing.suites.register<JvmTestSuite>("testEndToEnd") {
+    targets.configureEach {
+        testTask {
+            // testing needs to be performed with a renderer implementation that uses this env setting.
+            environment("PRESENTATION_FOLDER", project.layout.buildDirectory.dir("test-screenshot").get().asFile)
+            // disable on CI for now, as the tests require a display
+            if (providers.environmentVariable("CI").getOrElse("false").toBoolean()) {
+                enabled = false
+            }
+        }
+    }
     targets.named("testEndToEnd") {
         testTask {
             group = "build"
@@ -15,7 +21,6 @@ testing.suites.create<JvmTestSuite>("testEndToEnd") {
                 excludeTags("slow")
             }
         }
-        tasks.check { dependsOn(testTask) }
     }
     // Add a second task for the endToEndTest suite
     targets.register("testEndToEndSlow") {

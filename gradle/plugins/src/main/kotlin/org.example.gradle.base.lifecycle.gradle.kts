@@ -32,7 +32,7 @@ afterEvaluate {
             group = null
         }
         if (this is Jar) {
-            setGroup(null)
+            group = null
         }
         if (this is Test) {
             group = "build"

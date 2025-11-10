@@ -1,4 +1,10 @@
-plugins { id("org.gradlex.jvm-dependency-conflict-resolution") }
+import org.gradle.nativeplatform.MachineArchitecture.*
+import org.gradle.nativeplatform.OperatingSystemFamily.*
+
+plugins {
+    id("org.gradlex.jvm-dependency-conflict-resolution")
+    id("io.mvnpm.gradle.plugin.native-java-plugin")
+}
 
 jvmDependencyConflicts {
     // Configure build wide consistent resolution. That is, the versions that are used on the
@@ -10,41 +16,31 @@ jvmDependencyConflicts {
         providesVersions(":aggregation")
     }
 
-    // Configure logging capabilities plugin to default to Slf4JSimple
+    // Configure logging capabilities to default to Slf4JSimple
     logging { enforceSlf4JSimple() }
 
+    // Add missing information to metadata of 3rd-party libraries.
     patch {
-        module("com.github.racc:typesafeconfig-guice") {
-            // remove and re-add due to 'no_aop' classifier
-            removeDependency("com.google.inject:guice")
-            addApiDependency("com.google.inject:guice")
-        }
-
         module("com.google.guava:guava") {
             // remove annotation libraries we do not need
             removeDependency("com.google.j2objc:j2objc-annotations")
             removeDependency("org.checkerframework:checker-qual")
         }
 
-        align(
-            "org.apache.httpcomponents:httpclient",
-            "org.apache.httpcomponents:httpmime",
-            "org.apache.httpcomponents:fluent-hc",
-            "org.apache.httpcomponents:httpclient-cache",
-            "org.apache.httpcomponents:httpclient-win",
-            "org.apache.httpcomponents:httpclient-osgi",
-        )
-        align(
-            "org.apache.poi:poi",
-            "org.apache.poi:poi-excelant",
-            "org.apache.poi:poi-ooxml",
-            "org.apache.poi:poi-scratchpad",
-        )
-        align("com.google.inject.extensions:guice-servlet", "com.google.inject:guice")
-        align(
-            "org.jboss.resteasy:resteasy-core",
-            "org.jboss.resteasy:resteasy-guice",
-            "org.jboss.resteasy:resteasy-jackson2-provider",
-        )
+        val lwjglModules = listOf("", "-glfw", "-opengl", "-stb")
+        // LWJGL - https://github.com/LWJGL/lwjgl3/pull/1081
+        lwjglModules.forEach { module ->
+            @Suppress("UnstableApiUsage")
+            module("org.lwjgl:lwjgl$module") {
+                addTargetPlatformVariant("natives", "natives-linux", LINUX, X86_64)
+                addTargetPlatformVariant("natives", "natives-linux-arm64", LINUX, ARM64)
+                addTargetPlatformVariant("natives", "natives-macos", MACOS, X86_64)
+                addTargetPlatformVariant("natives", "natives-macos-arm64", MACOS, ARM64)
+                addTargetPlatformVariant("natives", "natives-windows", WINDOWS, X86_64)
+                addTargetPlatformVariant("natives", "natives-windows-arm64", WINDOWS, ARM64)
+            }
+        }
+        // LWJGL - https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/328
+        alignWithBom("org.lwjgl:lwjgl-bom", *lwjglModules.map { "org.lwjgl:lwjgl$it" }.toTypedArray())
     }
 }

@@ -9,4 +9,4 @@ plugins {
     id("org.example.gradle.report.test")
 }
 
-dependencies { implementation(projects.app) }
+dependencies { implementation(projects.appJamcatch) }
