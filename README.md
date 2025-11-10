@@ -18,12 +18,9 @@ The structure though, is good for any kind of project you may build with Gradle
 > - 🍃 [**Java** and **Spring Boot**](https://github.com/jjohannes/gradle-project-setup-howto/tree/spring_boot)
 
 > [!TIP]
-> For comparison, there are also Maven variants of the setup: 
-> - 🦉 [**Maven**](https://github.com/jjohannes/gradle-project-setup-howto/tree/java_mavenized)
-> - 🧩 [**Maven & Java Module System**](https://github.com/jjohannes/gradle-project-setup-howto/tree/java_module_system_mavenized)
-
-This is following similar patterns as [idiomatic-gradle](https://github.com/jjohannes/idiomatic-gradle)
-but is closer to a _full_ setup that also takes the aspect of continuously changing dependencies into account.
+> There are two sister repositories that share the same example with a different focus in the build setup
+> - 🧶 [**idiomatic-gradle**](https://github.com/jjohannes/idiomatic-gradle) Focus on structuring builds for both mono-repo or multi-repo setups
+> - 🕹️ [**javarcade**](https://github.com/jjohannes/javarcade) Focus on structured dependency management with the JavaRCA recipe
 
 ## Project Overview
 
@@ -31,9 +28,10 @@ but is closer to a _full_ setup that also takes the aspect of continuously chang
 
 ```
 ├── settings.gradle.kts     - Entry point file for Gradle to work with the project struture
-├── $module-name            - Each Module of the software has a folder
-│   ├── src                   - Production code and test code
-│   └── build.gradle.kts      - Defines the type of the Module and its dependencies
+├── $product-name           - Modules of the software are organized in 'product' folders 
+│   └── $module-name          - Each Module of the software has a folder
+│       ├── src               - Production code and test code
+│       └── build.gradle.kts  - Defines the type of the Module and its dependencies
 ├── gradle                  - Contains the build configuraton
 │   ├── version.txt           - Defines the version of the software all Modules share
 │   ├── jdk-version.txt       - Defines Java version used in the project 
@@ -50,7 +48,7 @@ but is closer to a _full_ setup that also takes the aspect of continuously chang
 
 - [Video: The Settings File](https://www.youtube.com/watch?v=Ajs8pTbg8as&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
 
-### The $module-name/build.gradle.kts files
+### The $product-name/$module-name/build.gradle.kts files
 
 Select a _Component Type_ by using the corresponding convention plugin and define the dependencies of the module.
 For example:
@@ -179,7 +177,7 @@ The task generates a [PlantUML](https://plantuml.com) file that you can render, 
   - [Gradle Remote Build Cache](https://docs.gradle.com/develocity/build-cache-node/)
   - [Reposilite](https://reposilite.com/) (👉[inspect](https://repo.onepiece.software/#/snapshots))
   - [Dependency Track](https://dependencytrack.org/)
-- [dependabot.yml](.github/dependabot.yml) Configure [Dependabot](https://github.com/dependabot) to automatically get version updates (👉[inspect](https://github.com/jjohannes/gradle-project-setup-howto/pulls/app%2Fdependabot))
+- [renovate.json](renovate.json) Configure [Renovate](https://github.com/apps/renovate) to automatically get version updates (👉[inspect](https://github.com/jjohannes/gradle-project-setup-howto/pulls/app%2Frenovate))
 
 ## Notes
 

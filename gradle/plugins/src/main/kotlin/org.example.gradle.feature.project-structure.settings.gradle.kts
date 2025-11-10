@@ -1,8 +1,13 @@
 // Include all subfolders that contain a 'build.gradle.kts' as subprojects
 rootDir
     .listFiles()
+    ?.filter { it.isDirectory && !it.name.startsWith(".") && it.name != "gradle" }
+    ?.flatMap { it.listFiles().asList() }
     ?.filter { File(it, "build.gradle.kts").exists() }
-    ?.forEach { subproject -> include(subproject.name) }
+    ?.forEach { subproject ->
+        include(":${subproject.name}")
+        project(":${subproject.name}").projectDir = subproject
+    }
 
 // Platform project
 include(":versions")
