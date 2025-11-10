@@ -16,6 +16,6 @@ testing.suites.named<JvmTestSuite>("test") {
     useJUnitJupiter()
     dependencies {
         implementation("org.junit.jupiter:junit-jupiter-params")
-        implementation("org.assertj:assertj-core:3.27.3")
+        implementation("org.assertj:assertj-core:3.27.6")
     }
 }
