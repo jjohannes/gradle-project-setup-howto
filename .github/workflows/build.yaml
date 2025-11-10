@@ -7,9 +7,6 @@ on:
 env:
   BUILD_CACHE_USER: ${{ secrets.BUILD_CACHE_USER }}
   BUILD_CACHE_PWD: ${{ secrets.BUILD_CACHE_PWD }}
-  PUBLISHING_REPOSITORY_URL: ${{ secrets.PUBLISHING_REPOSITORY_URL }}
-  PUBLISHING_REPOSITORY_USER: ${{ secrets.PUBLISHING_REPOSITORY_USER }}
-  PUBLISHING_REPOSITORY_PWD: ${{ secrets.PUBLISHING_REPOSITORY_PWD }}
 jobs:
   gradle-build:
     runs-on: ubuntu-latest
@@ -27,20 +24,11 @@ jobs:
       - run: "./gradlew testEndToEnd"
       - run: "./gradlew testEndToEndSlow"
       - run: "./gradlew check"
-      - run: "./gradlew cyclonedxBom --no-configuration-cache"
-#     - run: "./gradlew publish"
+      - run: "./gradlew cyclonedxBom"
         if: ${{ !contains(github.ref_name, '/') }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: reports
           path: gradle/aggregation/build/reports
-#      - uses: DependencyTrack/gh-upload-sbom@v3
-#        if: ${{ !contains(github.ref_name, '/') }}
-#        with:
-#          apiKey: ${{ secrets.DEPENDENCYTRACK_APIKEY }}
-#          bomFilename: "gradle/aggregation/build/reports/sbom/bom.xml"
-#          serverHostname: ${{ secrets.DEPENDENCYTRACK_URL }}
-#          projectName: "gradle-project-setup-howto"
-#          projectVersion: ${{ github.ref_name }}
-#          autoCreate: true
+
