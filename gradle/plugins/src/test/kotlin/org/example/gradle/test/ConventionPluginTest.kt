@@ -32,7 +32,7 @@ class ConventionPluginTest {
         p.catalog("""
             [libraries]
             resteasy-core = { module = "org.jboss.resteasy:resteasy-core", version = "4.7.6.Final" }
-            resteasy-jackson2-provider = { module = "org.jboss.resteasy:resteasy-jackson2-provider" }
+            resteasy-jackson2-provider = { module = "org.jboss.resteasy:resteasy-jackson2-provider", version = "4.7.6.Final" }
             guice = { module = "com.google.inject:guice", version = "5.1.0" }
         """.trimIndent())
         val buildFile = p.moduleBuildFile("""
@@ -46,7 +46,7 @@ class ConventionPluginTest {
                 implementation(libs.guice)
             }   
         """.trimIndent())
-        p.file("module/src/main/java/foo/Bar.java", """
+        p.file("product/module/src/main/java/foo/Bar.java", """
             package foo;
             public class Bar {
                 private org.jboss.resteasy.plugins.providers.jackson.ResteasyJackson2Provider a;
@@ -74,7 +74,7 @@ class ConventionPluginTest {
         p.catalog("""
             [libraries]
             resteasy-core = { module = "org.jboss.resteasy:resteasy-core", version = "4.7.6.Final" }
-            resteasy-jackson2-provider = { module = "org.jboss.resteasy:resteasy-jackson2-provider" }
+            resteasy-jackson2-provider = { module = "org.jboss.resteasy:resteasy-jackson2-provider", version = "4.7.6.Final" }
             guice = { module = "com.google.inject:guice", version = "5.1.0" }
         """.trimIndent())
         p.moduleBuildFile("""
@@ -88,7 +88,7 @@ class ConventionPluginTest {
                 implementation(libs.guice)
             }   
         """.trimIndent())
-        p.file("module/src/main/java/foo/Bar.java", """
+        p.file("product/module/src/main/java/foo/Bar.java", """
             package foo;
             public class Bar {
                 private org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap c;

@@ -19,7 +19,7 @@ class GradleProject {
     private val catalog = file("gradle/libs.versions.toml")
     private val versions = file("gradle/versions/build.gradle.kts")
     private val aggregation = file("gradle/aggregation/build.gradle.kts")
-    private val moduleBuildFile = file("module/build.gradle.kts")
+    private val moduleBuildFile = file("product/module/build.gradle.kts")
     private val versionFile = file("gradle/version.txt")
     private val jdkVersionFile = file("gradle/jdk-version.txt")
 

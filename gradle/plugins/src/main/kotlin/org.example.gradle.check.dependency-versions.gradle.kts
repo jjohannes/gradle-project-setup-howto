@@ -1,7 +1,10 @@
 import org.example.gradle.tasks.DependencyVersionUpgradesCheck
 import org.example.gradle.tasks.JavaVersionConsistencyCheck
 
-plugins { id("java-platform") }
+plugins {
+    id("org.example.gradle.base.lifecycle")
+    id("java-platform")
+}
 
 tasks.register<JavaVersionConsistencyCheck>("checkVersionConsistency") {
     group = JavaBasePlugin.VERIFICATION_GROUP
