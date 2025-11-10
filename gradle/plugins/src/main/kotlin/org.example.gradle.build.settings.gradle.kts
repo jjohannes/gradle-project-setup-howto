@@ -8,6 +8,7 @@ plugins {
 gradle.lifecycle.beforeProject {
     if (this.path == ":") {
         apply(plugin = "org.example.gradle.base.lifecycle")
+        apply(plugin = "org.example.gradle.check.format-base")
         apply(plugin = "org.example.gradle.check.format-gradle.root")
     }
 }

@@ -1,9 +1,6 @@
 import org.example.gradle.spotless.SortDependenciesStep
 
-plugins {
-    id("com.diffplug.spotless")
-    id("org.example.gradle.base.lifecycle")
-}
+plugins { id("com.diffplug.spotless") }
 
 spotless {
     kotlinGradle {
@@ -11,7 +8,3 @@ spotless {
         addStep(SortDependenciesStep.create())
     }
 }
-
-tasks.named("qualityCheck") { dependsOn(tasks.spotlessCheck) }
-
-tasks.named("qualityGate") { dependsOn(tasks.spotlessApply) }

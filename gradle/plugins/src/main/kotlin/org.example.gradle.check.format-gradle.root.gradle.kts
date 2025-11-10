@@ -13,7 +13,3 @@ spotless {
         target("gradle/plugins/src/main/**/*.kt")
     }
 }
-
-tasks.named("qualityCheck") { dependsOn(tasks.spotlessCheck) }
-
-tasks.named("qualityGate") { dependsOn(tasks.spotlessApply) }
