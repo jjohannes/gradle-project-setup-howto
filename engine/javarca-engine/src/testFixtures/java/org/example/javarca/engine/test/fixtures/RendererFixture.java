@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 
 public class RendererFixture {
 
+    public RendererFixture() {}
+
     public static Screenshot launchAndWaitForFinish() {
         Logger logger = LoggerFactory.getLogger(RendererFixture.class);
         File file = new File(System.getenv("PRESENTATION_FOLDER") + "/screen.png");
