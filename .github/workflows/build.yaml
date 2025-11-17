@@ -2,7 +2,7 @@ name: Build Project
 on:
   push:
     branches-ignore: [ renovate/** ]
-  pull_request_target:
+  pull_request:
     branches: [ main ]
 env:
   BUILD_CACHE_USER: ${{ secrets.BUILD_CACHE_USER }}
