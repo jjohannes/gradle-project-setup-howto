@@ -193,12 +193,17 @@ The task generates a [PlantUML](https://plantuml.com) file that you can render, 
 
 [List of questions](https://github.com/jjohannes/gradle-project-setup-howto/issues?q=is%3Aissue+label%3Aquestion) asked in issues so far.
 
+- [How does the consistent resolution setup work and why is there a circular reference?](https://github.com/jjohannes/gradle-project-setup-howto/issues/55)
+- [How many convention plugins should be used?](https://github.com/jjohannes/gradle-project-setup-howto/issues/10)
+- [How to adjust the setup to work with private Maven repositories? #66](https://github.com/jjohannes/gradle-project-setup-howto/issues/66)
+- [How to create a convention plugin for the OpenAPI Generator?](https://github.com/jjohannes/gradle-project-setup-howto/issues/103)
+- [How to customize the wrapper task?](https://github.com/jjohannes/gradle-project-setup-howto/issues/12)
+- [How to manage plugin versions in the version catalog?](https://github.com/jjohannes/gradle-project-setup-howto/issues/37)
+- [What are good practices when publishing libraries (API consistency, multiple variants, transitives)?](https://github.com/jjohannes/gradle-project-setup-howto/issues/17)
+- [Why and when to use afterEvaluate or projectsEvaluated?](https://github.com/jjohannes/gradle-project-setup-howto/issues/160)
 - [Why is the :app project special?](https://github.com/jjohannes/gradle-project-setup-howto/issues/4)
 - [Dependency Analysis: How to ignore dependencies added by plugins?](https://github.com/jjohannes/gradle-project-setup-howto/issues/6)
 - [Dependency Analysis: How to remove dependencies added by plugins?](https://github.com/jjohannes/gradle-project-setup-howto/issues/15)
-- [How many convention plugins should be used?](https://github.com/jjohannes/gradle-project-setup-howto/issues/10)
-- [How to customize the wrapper task?](https://github.com/jjohannes/gradle-project-setup-howto/issues/12)
-- [What are good practices when publishing libraries (API consistency, multiple variants, transitives)?](https://github.com/jjohannes/gradle-project-setup-howto/issues/17)
 - [Kotlin branch: Why is there a special handling of kotlin-stdlib?](https://github.com/jjohannes/gradle-project-setup-howto/issues/13)
 - [Kotlin branch: How to avoid the 'The Kotlin Gradle plugin was loaded multiple times' error?](https://github.com/jjohannes/gradle-project-setup-howto/issues/19)
 - [Spring branch: Why does the example not use the Spring Boot Dependency Management plugin?](https://github.com/jjohannes/gradle-project-setup-howto/issues/20)
