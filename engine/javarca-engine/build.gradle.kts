@@ -6,10 +6,10 @@ plugins {
 
 dependencies {
     api(projects.javarcaModel)
-    implementation(libs.slf4j.api)
+    implementation("org.slf4j:slf4j-api")
 
-    testImplementation(libs.junit.api)
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
 
-    testFixturesImplementation(libs.slf4j.api)
+    testFixturesImplementation("org.slf4j:slf4j-api")
     testFixturesRuntimeOnly(projects.rendererLwjgl)
 }
