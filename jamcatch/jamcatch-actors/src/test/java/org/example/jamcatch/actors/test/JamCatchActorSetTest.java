@@ -18,6 +18,6 @@ public class JamCatchActorSetTest {
         assertNotNull(actorSet);
         Set<Actor> actors = actorSet.items();
         assertNotNull(actors);
-        assertFalse(actors.isEmpty(), "Actor set should not be empty");
+        assertFalse(!actors.isEmpty(), "Actor set should not be empty");
     }
 }
