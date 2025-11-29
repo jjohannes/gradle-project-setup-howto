@@ -34,3 +34,24 @@ jobs:
           name: reports
           path: gradle/aggregation/build/reports
 
+
+  package:
+    needs: gradle-build
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, windows-2025, macos-15, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version-file: gradle/jdk-version.txt
+      - uses: gradle/actions/setup-gradle@v5
+        with:
+          cache-read-only: false
+      - run: "./gradlew jpackage${{ matrix.os }}"
+      - uses: actions/upload-artifact@v5
+        with:
+          name: Application Package ${{ matrix.os }}
+          path: apps/app-jamcatch/build/packages/*/*

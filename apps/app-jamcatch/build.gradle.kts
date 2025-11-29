@@ -1,6 +1,6 @@
 plugins { id("org.example.gradle.component.application") }
 
-application { mainClass = "org.example.javarca.engine.Engine" }
+application { mainModule = "org.example.javarca.engine" }
 
 dependencies {
     runtimeOnly(projects.jamcatchActors)
