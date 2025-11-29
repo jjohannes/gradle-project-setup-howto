@@ -9,3 +9,9 @@ lwjgl-stb = { module = "org.lwjgl:lwjgl-stb" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version = "2.0.17" }
 slf4j-jul = {  module = "org.slf4j:slf4j-jdk14" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple" }
+spring-boot = { module = "org.springframework.boot:spring-boot" }
+spring-boot-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure" }
+spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version = "3.5.7" }
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-context = { module = "org.springframework:spring-context" }
+spring-web = { module = "org.springframework:spring-web" }

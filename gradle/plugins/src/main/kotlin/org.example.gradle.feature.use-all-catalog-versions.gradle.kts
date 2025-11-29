@@ -3,6 +3,8 @@ plugins {
     id("org.example.gradle.base.lifecycle")
 }
 
+javaPlatform.allowDependencies()
+
 // Allow upgrading (transitive) versions via catalog by adding constraints
 dependencies.constraints {
     val libs = versionCatalogs.named("libs")
