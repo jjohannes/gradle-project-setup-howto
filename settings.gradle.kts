@@ -1,4 +1,8 @@
-pluginManagement { includeBuild("gradle/plugins") }
+pluginManagement {
+    repositories.gradlePluginPortal()
+    repositories.google()
+    includeBuild("gradle/plugins")
+}
 
 plugins { id("org.example.gradle.build") }
 
