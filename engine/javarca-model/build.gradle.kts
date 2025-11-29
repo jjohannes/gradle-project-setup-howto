@@ -3,4 +3,4 @@ plugins {
     id("org.example.gradle.feature.publish")
 }
 
-dependencies { testImplementation(libs.junit.api) }
+dependencies { testImplementation("org.junit.jupiter:junit-jupiter-api") }
