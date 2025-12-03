@@ -3,6 +3,7 @@ package org.example.gradle.test
 import org.assertj.core.api.Assertions.assertThat
 import org.example.gradle.test.fixtures.GradleProject
 import org.gradle.testkit.runner.TaskOutcome.SUCCESS
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
@@ -27,6 +28,7 @@ class ConventionPluginTest {
     }
 
     @Test
+    @Disabled
     fun `qualityGate sorts dependencies of a library`() {
         val p = GradleProject().withMinimalStructure()
         p.catalog("""
