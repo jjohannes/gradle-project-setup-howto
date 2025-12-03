@@ -5,7 +5,7 @@ plugins {
     id("org.example.gradle.feature.project-structure")
 }
 
-gradle.lifecycle.beforeProject {
+gradle.beforeProject {
     if (this.path == ":") {
         apply(plugin = "org.example.gradle.base.lifecycle")
         apply(plugin = "org.example.gradle.check.format-base")
