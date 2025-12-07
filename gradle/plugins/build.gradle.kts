@@ -1,6 +1,9 @@
 plugins { `kotlin-dsl` }
 
-repositories { gradlePluginPortal() }
+repositories {
+    gradlePluginPortal()
+    google()
+}
 
 dependencies {
     implementation("com.autonomousapps:dependency-analysis-gradle-plugin:3.5.1")
@@ -10,6 +13,7 @@ dependencies {
     implementation("io.mvnpm.gradle.plugin:native-java-plugin:1.0.0")
     implementation("org.cyclonedx:cyclonedx-gradle-plugin:2.4.1")
     implementation("org.gradlex:jvm-dependency-conflict-resolution:2.5")
+    implementation("com.android.tools.build:gradle:8.13.1")
 }
 
 testing.suites.named<JvmTestSuite>("test") {

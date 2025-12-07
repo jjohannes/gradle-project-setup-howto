@@ -1,5 +1,5 @@
 plugins {
-    id("org.gradle.java")
+    id("org.gradle.java-base")
     id("org.example.gradle.base.lifecycle")
 }
 
