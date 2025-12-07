@@ -8,5 +8,5 @@ dependencies {
     runtimeOnly(projects.jamcatchStage)
     runtimeOnly(projects.javarcaEngine)
     runtimeOnly(projects.rendererLwjgl)
-    runtimeOnly(libs.slf4j.simple)
+    runtimeOnly("org.slf4j:slf4j-simple")
 }

@@ -5,10 +5,10 @@ plugins {
 
 dependencies {
     api(projects.javarcaModel)
-    implementation(libs.commons.io)
+    implementation("commons-io:commons-io")
 
-    testImplementation(libs.junit.api)
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
 
     testEndToEndImplementation(testFixtures(projects.javarcaEngine))
-    testEndToEndImplementation(libs.junit.api)
+    testEndToEndImplementation("org.junit.jupiter:junit-jupiter-api")
 }

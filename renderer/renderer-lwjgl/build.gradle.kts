@@ -3,11 +3,11 @@ plugins { id("org.example.gradle.component.library") }
 @Suppress("UnstableApiUsage")
 dependencies {
     api(projects.javarcaEngine)
-    implementation(libs.lwjgl)
-    implementation(libs.lwjgl.glfw)
-    implementation(libs.lwjgl.opengl)
-    implementation(libs.lwjgl.stb)
-    implementation(libs.slf4j.api)
+    implementation("org.lwjgl:lwjgl")
+    implementation("org.lwjgl:lwjgl-glfw")
+    implementation("org.lwjgl:lwjgl-opengl")
+    implementation("org.lwjgl:lwjgl-stb")
+    implementation("org.slf4j:slf4j-api")
 
-    testImplementation(libs.junit.api)
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
 }
