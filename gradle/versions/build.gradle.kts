@@ -5,6 +5,8 @@ plugins {
     id("org.example.gradle.check.format-gradle")
 }
 
+dependencies { api(platform(libs.spring.boot.dependencies)) }
+
 tasks.checkVersionConsistency {
     excludes.add("org.junit.jupiter:junit-jupiter-api") // testing only
     excludes.add("org.assertj:assertj-core") // testing only
