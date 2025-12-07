@@ -9,6 +9,10 @@ dependencies {
     implementation("io.fuchs.gradle.classpath-collision-detector:classpath-collision-detector:1.0.0")
     implementation("io.mvnpm.gradle.plugin:native-java-plugin:1.0.0")
     implementation("org.cyclonedx:cyclonedx-gradle-plugin:2.4.1")
+    implementation("org.gradlex:extra-java-module-info:1.13.1")
+    implementation("org.gradlex:java-module-dependencies:1.11")
+    implementation("org.gradlex:java-module-packaging:1.1")
+    implementation("org.gradlex:java-module-testing:1.8")
     implementation("org.gradlex:jvm-dependency-conflict-resolution:2.5")
 }
 

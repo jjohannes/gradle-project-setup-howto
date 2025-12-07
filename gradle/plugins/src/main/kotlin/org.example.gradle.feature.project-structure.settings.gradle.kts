@@ -1,23 +1,13 @@
-// Include all subfolders that contain a 'build.gradle.kts' as subprojects
-rootDir
-    .listFiles()
-    ?.filter { it.isDirectory && !it.name.startsWith(".") && it.name != "gradle" }
-    ?.flatMap { it.listFiles().asList() }
-    ?.filter { File(it, "build.gradle.kts").exists() }
-    ?.forEach { subproject ->
-        include(":${subproject.name}")
-        project(":${subproject.name}").projectDir = subproject
-    }
+import org.gradlex.javamodule.dependencies.initialization.JavaModulesExtension
 
-// Platform project
-include(":versions")
+plugins { id("org.gradlex.java-module-dependencies") }
 
-project(":versions").projectDir = file("gradle/versions")
+configure<JavaModulesExtension> {
+    versions("gradle/versions")
 
-// Aggregation and analysis project to create reports about the whole software (coverage, SBOM, ...)
-include(":aggregation")
-
-project(":aggregation").projectDir = file("gradle/aggregation")
+    // Analysis project to create reports about the whole software (coverage, SBOM, ...)
+    module("gradle/aggregation")
+}
 
 // Allow local projects to be referred to by accessor
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

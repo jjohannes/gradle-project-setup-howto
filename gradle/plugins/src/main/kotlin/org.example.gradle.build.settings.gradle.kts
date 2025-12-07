@@ -1,3 +1,5 @@
+import org.gradlex.javamodule.dependencies.initialization.RootPluginsExtension
+
 plugins {
     id("org.example.gradle.report.develocity")
     id("org.example.gradle.feature.repositories")
@@ -5,10 +7,8 @@ plugins {
     id("org.example.gradle.feature.project-structure")
 }
 
-gradle.lifecycle.beforeProject {
-    if (this.path == ":") {
-        apply(plugin = "org.example.gradle.base.lifecycle")
-        apply(plugin = "org.example.gradle.check.format-base")
-        apply(plugin = "org.example.gradle.check.format-gradle.root")
-    }
+configure<RootPluginsExtension> {
+    id("org.example.gradle.base.lifecycle")
+    id("org.example.gradle.check.format-base")
+    id("org.example.gradle.check.format-gradle.root")
 }
