@@ -24,6 +24,7 @@ jobs:
       - run: "./gradlew testEndToEnd"
       - run: "./gradlew testEndToEndSlow"
       - run: "./gradlew build"
+      - run: "./gradlew jpackage"
       - run: "./gradlew cyclonedxDirectBom"
         if: ${{ !contains(github.ref_name, '/') }}
       - uses: forgejo/upload-artifact@v5

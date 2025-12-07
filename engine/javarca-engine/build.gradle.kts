@@ -1,15 +1,10 @@
 plugins {
-    id("org.example.gradle.component.library")
+    id("org.gradle.application")
     id("org.example.gradle.feature.test-fixtures")
-    id("org.example.gradle.feature.publish")
 }
 
-dependencies {
-    api(projects.javarcaModel)
-    implementation("org.slf4j:slf4j-api")
+application { mainClass = "org.example.javarca.engine.Engine" }
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
-
-    testFixturesImplementation("org.slf4j:slf4j-api")
-    testFixturesRuntimeOnly(projects.rendererLwjgl)
-}
+// Ideally, it would be poissible to express that this project on its own is not an application
+// https://github.com/autonomousapps/dependency-analysis-gradle-plugin/issues/761
+dependencyAnalysis.issues { onIncorrectConfiguration { exclude(":javarca-model") } }

@@ -1,5 +1,4 @@
-import com.autonomousapps.DependencyAnalysisSubExtension
-import com.autonomousapps.tasks.ProjectHealthTask
+import org.gradlex.javamodule.dependencies.tasks.ModuleDirectivesScopeCheck
 
 plugins {
     id("org.gradle.java")
@@ -8,15 +7,12 @@ plugins {
     id("org.example.gradle.base.lifecycle")
 }
 
-// Configure the dependency analysis plugin to fail if issues are found
-configure<DependencyAnalysisSubExtension> { issues { onAny { severity("fail") } } }
-
 tasks.named("qualityCheck") {
     dependsOn(tasks.detectCollisions)
-    dependsOn(tasks.withType<ProjectHealthTask>())
+    dependsOn(tasks.withType<ModuleDirectivesScopeCheck>())
 }
 
 tasks.named("qualityGate") {
     dependsOn(tasks.detectCollisions)
-    dependsOn(tasks.withType<ProjectHealthTask>())
+    dependsOn(tasks.withType<ModuleDirectivesScopeCheck>())
 }
