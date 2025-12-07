@@ -45,7 +45,6 @@ class GradleProject {
         """.trimIndent())
         versions.writeText("""plugins {
             id("org.example.gradle.base.lifecycle")
-            id("org.example.gradle.feature.use-all-catalog-versions")
         }""".trimIndent())
         aggregation.writeText("")
         catalog("""
