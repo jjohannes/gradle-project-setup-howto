@@ -1,7 +1,7 @@
 [libraries]
 commons-csv = { module = "org.apache.commons:commons-csv", version = "1.14.1" }
 commons-io = { module = "commons-io:commons-io", version = "2.21.0" }
-junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version = "6.0.2" }
+junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version = "6.0.3" }
 lwjgl = { module = "org.lwjgl:lwjgl", version = "3.4.1" }
 lwjgl-glfw = { module = "org.lwjgl:lwjgl-glfw" }
 lwjgl-opengl = { module = "org.lwjgl:lwjgl-opengl" }
