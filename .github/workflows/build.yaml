@@ -19,7 +19,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v5
         with:
           cache-read-only: false
-      - uses: testlens-app/setup-testlens@v1.7.0
+      - uses: testlens-app/setup-testlens@v1.7.1
       - run: "./gradlew :plugins:test" # test the Gradle configuration
       - run: "./gradlew qualityCheck"
       - run: "./gradlew test"
