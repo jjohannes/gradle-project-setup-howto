@@ -3,7 +3,7 @@ plugins { `kotlin-dsl` }
 repositories { gradlePluginPortal() }
 
 dependencies {
-    implementation("com.autonomousapps:dependency-analysis-gradle-plugin:3.6.0")
+    implementation("com.autonomousapps:dependency-analysis-gradle-plugin:3.6.1")
     implementation("com.diffplug.spotless:spotless-plugin-gradle:8.2.1")
     implementation("com.gradle:develocity-gradle-plugin:4.3.2")
     implementation("io.fuchs.gradle.classpath-collision-detector:classpath-collision-detector:1.0.0")
