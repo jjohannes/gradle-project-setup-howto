@@ -4,7 +4,7 @@ repositories { gradlePluginPortal() }
 
 dependencies {
     implementation("com.autonomousapps:dependency-analysis-gradle-plugin:3.6.1")
-    implementation("com.diffplug.spotless:spotless-plugin-gradle:8.2.1")
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:8.3.0")
     implementation("com.gradle:develocity-gradle-plugin:4.3.2")
     implementation("io.fuchs.gradle.classpath-collision-detector:classpath-collision-detector:1.0.0")
     implementation("io.mvnpm.gradle.plugin:native-java-plugin:1.0.0")
