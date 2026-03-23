@@ -16,7 +16,7 @@ jobs:
         with:
           distribution: temurin
           java-version-file: gradle/jdk-version.txt
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
         with:
           cache-read-only: false
       - uses: testlens-app/setup-testlens@v1.8.0
