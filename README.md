@@ -169,10 +169,10 @@ There is also a help task that you can use to get a diagram of the convention pl
 
 The task generates a [PlantUML](https://plantuml.com) file that you can render, for example, with the PlantUML IntelliJ plugin.
 
-### Continuously build and report using GitHub Actions and Dependabot
+### Continuously build and report using GitHub Actions and Renovate
 
 - [build.yaml](.github/workflows/build.yaml) Configure GitHub to run builds and produce reports (👉[inspect](https://github.com/jjohannes/gradle-project-setup-howto/actions/workflows/build.yaml)). Integrates with:
-  - [Develocity Build Scans](https://scans.gradle.com/) (👉[inspect](https://scans.gradle.com/s/h3odwhbjjd2qm))
+  - [Develocity Build Scans](https://scans.gradle.com/) (👉[inspect](https://scans.gradle.com/s/im3mk2aode3qe))
   - [Gradle Remote Build Cache](https://docs.gradle.com/develocity/build-cache-node/)
   - [Reposilite](https://reposilite.com/) (👉[inspect](https://repo.onepiece.software/#/snapshots))
   - [Dependency Track](https://dependencytrack.org/)
