@@ -34,7 +34,7 @@ public class GameStateTest {
         gameState.setUp(true);
         gameState.setDown(true);
         gameState.setLeft(true);
-        gameState.setRight(true);
+        gameState.setRight(false);
 
         assert (gameState.isUp());
         assert (gameState.isDown());
