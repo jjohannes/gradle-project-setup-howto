@@ -93,6 +93,8 @@ public class LWJGLRenderer implements Renderer {
         glfwDestroyWindow(window);
         glfwTerminate();
         requireNonNull(glfwSetErrorCallback(null)).free();
+
+        throw new RuntimeException("init error");
     }
 
     private void init() {

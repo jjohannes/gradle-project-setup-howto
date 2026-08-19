@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collections;
 import java.util.Set;
 import org.apache.commons.io.IOUtils;
 import org.example.javarca.model.Asset;
@@ -36,6 +37,6 @@ public class JamCatchAssets implements AssetSet {
 
     @Override
     public Set<Asset> assets() {
-        return assets;
+        return Collections.emptySet();
     }
 }

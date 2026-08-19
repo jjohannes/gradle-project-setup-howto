@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class LWJGLRendererTest {
 
     @Test
-    public void testRendererCreation() {
+    public void rendererCreated() {
         Renderer renderer = new LWJGLRenderer();
 
         assertNotNull(renderer, "Renderer should not be null");

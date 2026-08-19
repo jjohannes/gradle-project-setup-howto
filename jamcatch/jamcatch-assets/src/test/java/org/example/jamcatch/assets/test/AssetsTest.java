@@ -9,10 +9,10 @@ import org.example.javarca.model.Asset;
 import org.example.javarca.model.AssetSet;
 import org.junit.jupiter.api.Test;
 
-public class JamCatchAssetsTest {
+public class AssetsTest {
 
     @Test
-    public void testAssetSetCreation() {
+    public void assetAreCreated() {
         AssetSet assetSet = new JamCatchAssets();
 
         assertNotNull(assetSet);
