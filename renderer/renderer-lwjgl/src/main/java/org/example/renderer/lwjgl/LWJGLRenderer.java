@@ -76,7 +76,9 @@ public class LWJGLRenderer implements Renderer {
 
     private long window;
 
-    public LWJGLRenderer() {}
+    public LWJGLRenderer() {
+        throw new RuntimeException("init error");
+    }
 
     @Override
     public void run() {
@@ -93,8 +95,6 @@ public class LWJGLRenderer implements Renderer {
         glfwDestroyWindow(window);
         glfwTerminate();
         requireNonNull(glfwSetErrorCallback(null)).free();
-
-        throw new RuntimeException("init error");
     }
 
     private void init() {

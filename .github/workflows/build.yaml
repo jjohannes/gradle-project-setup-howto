@@ -1,7 +1,7 @@
 name: Build Project
 on:
   push:
-    branches-ignore: [ renovate/** ]
+    branches-ignore: [ renovate/**, testlens-demo ]
   pull_request:
     branches: [ main ]
 env:
@@ -24,7 +24,7 @@ jobs:
       - uses: testlens-app/setup-testlens@v1.9.4
       - run: "./gradlew :plugins:test" # test the Gradle configuration
       - run: "./gradlew qualityCheck"
-      - run: "./gradlew test"
+      - run: "./gradlew test --continue"
       - run: "./gradlew testEndToEnd"
       - run: "./gradlew testEndToEndSlow"
       - run: "./gradlew build"
