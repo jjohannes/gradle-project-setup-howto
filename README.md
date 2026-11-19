@@ -11,16 +11,16 @@ The structure though, is good for any kind of project you may build with Gradle
 
 > [!NOTE]
 > There are adjustments on other branches of this repo that show how the setup can be varied:
-> - 🧩 [**Java Module System**](https://github.com/jjohannes/gradle-project-setup-howto/tree/java_module_system)
-> - 📦 [**Versions in BOM/Platform**](https://github.com/jjohannes/gradle-project-setup-howto/tree/java_bom)
-> - 🦩 [**Kotlin**](https://github.com/jjohannes/gradle-project-setup-howto/tree/kotlin)
-> - 🤖 [**Android**](https://github.com/jjohannes/gradle-project-setup-howto/tree/android)
-> - 🍃 [**Java** and **Spring Boot**](https://github.com/jjohannes/gradle-project-setup-howto/tree/spring_boot)
+> - 🧩 [**Java Module System**](https://codeberg.org/jjohannes/gradle-project-setup-howto/src/branch/java_module_system)
+> - 📦 [**Versions in BOM/Platform**](https://codeberg.org/jjohannes/gradle-project-setup-howto/src/branch/java_bom)
+> - 🦩 [**Kotlin**](https://codeberg.org/jjohannes/gradle-project-setup-howto/src/branch/kotlin)
+> - 🤖 [**Android**](https://codeberg.org/jjohannes/gradle-project-setup-howto/src/branch/android)
+> - 🍃 [**Java** and **Spring Boot**](https://codeberg.org/jjohannes/gradle-project-setup-howto/src/branch/spring_boot)
 
 > [!TIP]
 > There are two sister repositories that share the same example with a different focus in the build setup
-> - 🧶 [**idiomatic-gradle**](https://github.com/jjohannes/idiomatic-gradle) Focus on structuring builds for both mono-repo or multi-repo setups
-> - 🕹️ [**javarcade**](https://github.com/jjohannes/javarcade) Focus on structured dependency management with the JavaRCA recipe
+> - 🧶 [**idiomatic-gradle**](https://codeberg.org/jjohannes/idiomatic-gradle) Focus on structuring builds for both mono-repo or multi-repo setups
+> - 🕹️ [**javarcade**](https://codeberg.org/jjohannes/javarcade) Focus on structured dependency management with the JavaRCA recipe
 
 ## Project Overview
 
@@ -43,7 +43,7 @@ The structure though, is good for any kind of project you may build with Gradle
 │   └── wrapper               - Define Gradle version used via Gradle Wrapper
 ├── gradle.properties       - Gradle startup parameters and global switches
 ├── build.gradle.kts        - Use plugins for checks and auto-formating on the whole project
-└── .github                 - Integrate with GitHub Actions CI system
+└── .forgejo                - Integration with CI system
 ```
 
 - [Video: The Settings File](https://www.youtube.com/watch?v=Ajs8pTbg8as&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
@@ -169,43 +169,42 @@ There is also a help task that you can use to get a diagram of the convention pl
 
 The task generates a [PlantUML](https://plantuml.com) file that you can render, for example, with the PlantUML IntelliJ plugin.
 
-### Continuously build and report using GitHub Actions and Renovate
+### Continuously build and report using CI and Renovate
 
-- [build.yaml](.github/workflows/build.yaml) Configure GitHub to run builds and produce reports (👉[inspect](https://github.com/jjohannes/gradle-project-setup-howto/actions/workflows/build.yaml)). Integrates with:
+- [build.yaml](.forgejo/workflows/build.yaml) Configure CI to run builds and produce reports (👉[inspect](https://codeberg.org/jjohannes/gradle-project-setup-howto/actions/workflows/build.yaml)). Integrates with:
   - [Develocity Build Scans](https://scans.gradle.com/) (👉[inspect](https://scans.gradle.com/s/im3mk2aode3qe))
   - [Gradle Remote Build Cache](https://docs.gradle.com/develocity/build-cache-node/)
   - [Reposilite](https://reposilite.com/) (👉[inspect](https://repo.onepiece.software/#/snapshots))
   - [Dependency Track](https://dependencytrack.org/)
-- [renovate.json](renovate.json) Configure [Renovate](https://github.com/apps/renovate) to automatically get version updates (👉[inspect](https://github.com/jjohannes/gradle-project-setup-howto/pulls/app%2Frenovate))
+- [renovate.json](renovate.json) Configure [Renovate](https://docs.renovatebot.com/getting-started/running/) to automatically get version updates (👉[inspect](https://codeberg.org/jjohannes/gradle-project-setup-howto/pulls/?poster=renovate[bot]))
 
 ## Notes
 
-- If you have a question, please ask in an [issue](https://github.com/jjohannes/gradle-project-setup-howto/issues/new).
+- If you have a question, please ask in an [issue](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/new).
 - The concrete things done in all places (custom tasks, components used in dependencies, additional plugins applied, etc.) are just examples.
   If you, for example, need to use additional Gradle plugins you can add these in the corresponding place, keeping the suggested structure.
 - There was a different version of this repository I initially published in 2022. The setup was more complex by splitting
   the Gradle configuration over more folders which required more boilerplate. After using a setup like this in several
   projects, I felt that the setup was overly complex without adding much value. I ended up striping it down to what this
-  repository is now. The older version is still accessible on the
-  [2022_java](https://github.com/jjohannes/gradle-project-setup-howto/tree/2022_java) branch.
+  repository is now.
 
 ## FAQ
 
-[List of questions](https://github.com/jjohannes/gradle-project-setup-howto/issues?q=is%3Aissue+label%3Aquestion) asked in issues so far.
+[List of questions](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues?q=is%3Aissue+label%3Aquestion) asked in issues so far.
 
-- [How does the consistent resolution setup work and why is there a circular reference?](https://github.com/jjohannes/gradle-project-setup-howto/issues/55)
-- [How many convention plugins should be used?](https://github.com/jjohannes/gradle-project-setup-howto/issues/10)
-- [How to adjust the setup to work with private Maven repositories? #66](https://github.com/jjohannes/gradle-project-setup-howto/issues/66)
-- [How to create a convention plugin for the OpenAPI Generator?](https://github.com/jjohannes/gradle-project-setup-howto/issues/103)
-- [How to customize the wrapper task?](https://github.com/jjohannes/gradle-project-setup-howto/issues/12)
-- [How to manage plugin versions in the version catalog?](https://github.com/jjohannes/gradle-project-setup-howto/issues/37)
-- [What are good practices when publishing libraries (API consistency, multiple variants, transitives)?](https://github.com/jjohannes/gradle-project-setup-howto/issues/17)
-- [Why and when to use afterEvaluate or projectsEvaluated?](https://github.com/jjohannes/gradle-project-setup-howto/issues/160)
-- [Why is the :app project special?](https://github.com/jjohannes/gradle-project-setup-howto/issues/4)
-- [Dependency Analysis: How to ignore dependencies added by plugins?](https://github.com/jjohannes/gradle-project-setup-howto/issues/6)
-- [Dependency Analysis: How to remove dependencies added by plugins?](https://github.com/jjohannes/gradle-project-setup-howto/issues/15)
-- [Kotlin branch: Why is there a special handling of kotlin-stdlib?](https://github.com/jjohannes/gradle-project-setup-howto/issues/13)
-- [Kotlin branch: How to avoid the 'The Kotlin Gradle plugin was loaded multiple times' error?](https://github.com/jjohannes/gradle-project-setup-howto/issues/19)
-- [Spring branch: Why does the example not use the Spring Boot Dependency Management plugin?](https://github.com/jjohannes/gradle-project-setup-howto/issues/20)
+- [How does the consistent resolution setup work and why is there a circular reference?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/55)
+- [How many convention plugins should be used?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/10)
+- [How to adjust the setup to work with private Maven repositories? #66](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/66)
+- [How to create a convention plugin for the OpenAPI Generator?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/103)
+- [How to customize the wrapper task?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/12)
+- [How to manage plugin versions in the version catalog?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/37)
+- [What are good practices when publishing libraries (API consistency, multiple variants, transitives)?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/17)
+- [Why and when to use afterEvaluate or projectsEvaluated?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/160)
+- [Why is the :app project special?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/4)
+- [Dependency Analysis: How to ignore dependencies added by plugins?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/6)
+- [Dependency Analysis: How to remove dependencies added by plugins?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/15)
+- [Kotlin branch: Why is there a special handling of kotlin-stdlib?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/13)
+- [Kotlin branch: How to avoid the 'The Kotlin Gradle plugin was loaded multiple times' error?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/19)
+- [Spring branch: Why does the example not use the Spring Boot Dependency Management plugin?](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/20)
 
-More questions or points you would like to discuss? Please [open an issue](https://github.com/jjohannes/gradle-project-setup-howto/issues/new).
+More questions or points you would like to discuss? Please [open an issue](https://codeberg.org/jjohannes/gradle-project-setup-howto/issues/new).

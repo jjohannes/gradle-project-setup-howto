@@ -4,9 +4,6 @@ on:
     branches-ignore: [ renovate/** ]
   pull_request:
     branches: [ main ]
-env:
-  BUILD_CACHE_USER: ${{ secrets.BUILD_CACHE_USER }}
-  BUILD_CACHE_PWD: ${{ secrets.BUILD_CACHE_PWD }}
 jobs:
   gradle-build:
     runs-on: ubuntu-latest
@@ -21,7 +18,6 @@ jobs:
           cache-read-only: false
           build-scan-terms-of-use-url: https://gradle.com/help/legal-terms-of-use
           build-scan-terms-of-use-agree: yes
-      - uses: testlens-app/setup-testlens@v1.10.0
       - run: "./gradlew :plugins:test" # test the Gradle configuration
       - run: "./gradlew qualityCheck"
       - run: "./gradlew test"
@@ -30,7 +26,7 @@ jobs:
       - run: "./gradlew build"
       - run: "./gradlew cyclonedxDirectBom"
         if: ${{ !contains(github.ref_name, '/') }}
-      - uses: actions/upload-artifact@v7
+      - uses: forgejo/upload-artifact@v5
         if: always()
         with:
           name: reports
