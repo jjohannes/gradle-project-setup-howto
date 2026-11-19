@@ -55,7 +55,7 @@ abstract class PluginApplicationOrderAnalysis : DefaultTask() {
                
             @enduml
         """
-                    .trimIndent()
+                    .trimIndent(),
             )
 
         logger.lifecycle("Diagram: ${pluginApplicationDiagram.get().asFile.absolutePath}")

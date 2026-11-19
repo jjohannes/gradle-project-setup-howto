@@ -43,7 +43,7 @@ tasks.register<DependencyVersionUpgradesCheck>("checkForDependencyVersionUpgrade
     projectName.set(project.name)
     dependencies.set(configurations.api.get().dependencies.map { "${it.group}:${it.name}:${it.version}" })
     dependencyConstraints.set(
-        configurations.api.get().dependencyConstraints.map { "${it.group}:${it.name}:${it.version}" }
+        configurations.api.get().dependencyConstraints.map { "${it.group}:${it.name}:${it.version}" },
     )
     latestReleasesResolutionResult.set(latestReleasesPath.map { it.incoming.resolutionResult.allComponents })
 }
