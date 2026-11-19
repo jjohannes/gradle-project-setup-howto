@@ -8,11 +8,7 @@ plugins {
 java {
     toolchain.languageVersion =
         JavaLanguageVersion.of(
-            providers
-                .fileContents(isolated.rootProject.projectDirectory.file("gradle/jdk-version.txt"))
-                .asText
-                .get()
-                .trim(),
+            providers.fileContents(layout.settingsDirectory.file("gradle/jdk-version.txt")).asText.get().trim(),
         )
 }
 

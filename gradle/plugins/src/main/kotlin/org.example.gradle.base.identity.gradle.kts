@@ -5,8 +5,7 @@ plugins { id("org.gradle.base") }
 group = "org.example"
 
 // Set the version from 'version.txt'
-@Suppress("UnstableApiUsage")
-version = providers.fileContents(isolated.rootProject.projectDirectory.file("gradle/version.txt")).asText.getOrElse("")
+version = providers.fileContents(layout.settingsDirectory.file("gradle/version.txt")).asText.getOrElse("")
 
 // On CI, add timestamp for publishing
 if (providers.environmentVariable("CI").getOrElse("false").toBoolean()) {
