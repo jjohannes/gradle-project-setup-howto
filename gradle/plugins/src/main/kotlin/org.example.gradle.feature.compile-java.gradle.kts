@@ -12,7 +12,7 @@ java {
                 .fileContents(isolated.rootProject.projectDirectory.file("gradle/jdk-version.txt"))
                 .asText
                 .get()
-                .trim()
+                .trim(),
         )
 }
 

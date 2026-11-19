@@ -18,8 +18,9 @@ class SortDependenciesStep : java.io.Serializable {
     fun toFormatter(): FormatterFunc {
         return FormatterFunc { unixStr ->
             val lines = unixStr.split('\n')
-            val blockStartIndex =
-                lines.indexOfFirst { it.startsWith("dependencies {") || it.startsWith("dependencies.constraints {") }
+            val blockStartIndex = lines.indexOfFirst {
+                it.startsWith("dependencies {") || it.startsWith("dependencies.constraints {")
+            }
             if (blockStartIndex == -1 || lines[blockStartIndex].contains("}")) {
                 unixStr // no 'dependencies {} block' or only one line
             } else {

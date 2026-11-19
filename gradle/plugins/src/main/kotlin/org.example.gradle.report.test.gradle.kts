@@ -26,7 +26,7 @@ tasks.testAggregateTestReport {
                     )
                 }
             }
-            .files
+            .files,
     )
 }
 

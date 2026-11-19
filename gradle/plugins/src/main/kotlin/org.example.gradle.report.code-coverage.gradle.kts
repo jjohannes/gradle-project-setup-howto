@@ -28,7 +28,7 @@ tasks.testCodeCoverageReport {
                     attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, ArtifactTypeDefinition.BINARY_DATA_TYPE)
                 }
             }
-            .files
+            .files,
     )
 }
 

@@ -38,7 +38,7 @@ abstract class DependencyVersionUpgradesCheck : DefaultTask() {
                     If we cannot perform an upgrade, please add a '{ version { reject("...") } }' statement and a comment
                     for the versions we cannot support at the moment.
                 """
-                    .trimIndent()
+                    .trimIndent(),
             )
         }
     }
