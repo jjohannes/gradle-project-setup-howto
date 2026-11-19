@@ -28,7 +28,7 @@ jobs:
       - run: "./gradlew testEndToEnd"
       - run: "./gradlew testEndToEndSlow"
       - run: "./gradlew build"
-      - run: "./gradlew cyclonedxBom"
+      - run: "./gradlew cyclonedxDirectBom"
         if: ${{ !contains(github.ref_name, '/') }}
       - uses: actions/upload-artifact@v7
         if: always()
