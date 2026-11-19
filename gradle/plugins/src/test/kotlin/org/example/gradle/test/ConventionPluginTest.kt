@@ -58,7 +58,9 @@ class ConventionPluginTest {
         p.qualityGate()
 
         assertThat(buildFile).hasContent("""
-            plugins { id("org.example.gradle.component.library") }
+            plugins {
+                id("org.example.gradle.component.library")
+            }
             
             dependencies {
                 api(libs.resteasy.core)
